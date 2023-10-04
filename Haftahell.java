@@ -7,14 +7,20 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Haftahell {
-
+    static Random Random = new Random();
+    static int danoInimigo = Random.nextInt(24);
+    static int DanoInimigo = danoInimigo;
+    static int danoPersonagem = Random.nextInt(24);
     static Scanner entrada = new Scanner(System.in);
     static String nome;
-
+    static int vidaCriatura = 50;
+    static int vidaPersonagem = 50;
+    static int vidaBoss = 100;
+    static int healthPotion = 3;
+    static int healthPotionEnemy = 3;
     public static void main(String[] args) {
-       menu();
-        System.out.println("Vc encontra um inimigo, ataque ele!!!");
-        perguntas();
+        combate();
+        menu();
     }
 
     public static void historiaPrologo() { // Inicia o começo da Historia do RPG
@@ -63,17 +69,84 @@ public class Haftahell {
         System.out.println("Enter...");
         entrada.nextLine(); // Aguarda até que o usuário pressione Enter
     }
-
-    static void random() { //Randomificação das decisões do inimigo
-        Random dado = new Random();
-        int dado20Faces = dado.nextInt(4);
-        switch (dado20Faces) {
-            case 1, 3 -> {
-                System.out.println("O inimigo escolheu golpear");
-                perguntas();
+static void combatePersonagem() { //Decisões do turno do personagem
+        int decisao = Random.nextInt(5);
+        
+        switch (danoPersonagem) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+            case 13:
+                danoPersonagem = 13;
+                break;
+        }
+        System.out.println("== Seu turno ==");
+        System.out.println("1 - Golpear");
+        System.out.println("2 - Curar");
+        System.out.println("3 - Fugir");
+        System.out.println("===============");
+        int escolha = entrada.nextInt();
+        switch (escolha) {
+            case 1 -> {
+                System.out.println("Voce escolheu golpear");
+                ataquePersonagem();
             }
-            case 2 -> System.out.println("O inimigo escolheu curar");
-            case 4 -> System.out.println("O inimigo escolheu fugir");
+            case 2 ->{
+                System.out.println("Voce escolheu curar");
+                curarPersonagem();
+                
+            }
+            case 3 -> {
+                System.out.println("Você escolheu fugir");
+                System.out.println("Você fugiu covardemente, seu inimigo está rindo de vc agr");
+        }
+            default -> System.out.println("Você não escolheu um número válido");
+        }
+        
+    }
+    static void combateInimigo() { //Randomificação das decisões do inimigo
+        
+        int decisao = Random.nextInt(5);
+        
+        switch (DanoInimigo) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+            case 13:
+                DanoInimigo = 13;
+                break;
+        }
+        switch (decisao) {
+            case 0,1, 3 -> {
+                System.out.println("O inimigo escolheu golpear");
+                ataqueMiniBoss();
+            }
+            case 2, 4-> {
+                System.out.println("O inimigo escolheu curar");
+                curarInimigo();
+                
+            }                
+           
         }
     }
     
@@ -85,7 +158,7 @@ public class Haftahell {
         System.out.println("4 - Capitulo 3");
         System.out.println("5 - Capitulo 4");
         System.out.println("6 - Capitulo 5");
-        int escolha = entrada.nextInt();
+        int escolha = Random.nextInt();
 
         switch (escolha) { // Escolha dos capitulos
             case 1 -> {
@@ -96,9 +169,67 @@ public class Haftahell {
         }
         // Escolha dos capitulos
             }
+    static void ataquePersonagem() {
+      
+        ArrayList<String> perguntas = new ArrayList<>();
+        perguntas.add("Quanto é 1 + 1?");
+        perguntas.add("Quanto é 2 + 2?");
+        perguntas.add("Quanto é 3 + 3?");
+        perguntas.add("Quanto é 4 + 4?");
+        perguntas.add("Quanto é 5 + 5?");
+        perguntas.add("Quanto é 6 + 6?");
+        perguntas.add("Quanto é 7 + 7?");
+        perguntas.add("Quanto é 8 + 8?");
+        perguntas.add("Quanto é 9 + 9?");
+        perguntas.add("Quanto é 10 + 10?");
+        perguntas.add("Quanto é 11 + 11?");
+        perguntas.add("Quanto é 12 + 12?");
+        perguntas.add("Quanto é 13 + 13?");
+        perguntas.add("Quanto é 14 + 14?");
+        perguntas.add("Quanto é 15 + 15?");
+        perguntas.add("Quanto é 16 + 16?");
+        perguntas.add("Quanto é 17 + 17?");
+        perguntas.add("Quanto é 18 + 18?");
+        perguntas.add("Quanto é 19 + 19?");
+        perguntas.add("Quanto é 20 + 20?");
+        int n = perguntas.size();
+        Random pergunta = new Random();
+        int numPergunta = pergunta.nextInt(n);
+        ArrayList<Integer> respostas = new ArrayList<>();
+        respostas.add(2);
+        respostas.add(4);
+        respostas.add(6);
+        respostas.add(8);
+        respostas.add(10);
+        respostas.add(12);
+        respostas.add(14);
+        respostas.add(16);
+        respostas.add(18);
+        respostas.add(20);
+        respostas.add(22);
+        respostas.add(24);
+        respostas.add(26);
+        respostas.add(28);
+        respostas.add(30);
+        respostas.add(32);
+        respostas.add(34);
+        respostas.add(36);
+        respostas.add(38);
+        respostas.add(40);
+        System.out.println(perguntas.get(numPergunta));
+        System.out.println("Digite a resposta correta! ");
+        double num = entrada.nextDouble(); 
+        if (respostas.get(numPergunta) == num) {
+        System.out.println("Resposta correta, você atacou o inimigo");
+        vidaCriatura = vidaCriatura - danoPersonagem;
+            System.out.format("A vida do inimigo está em %d\n", vidaCriatura);
+        }
+        else 
+        System.out.println("Resposta Incorreta, a resposta correta é " + respostas.get(numPergunta ) + " você errou o ataque no inimigo");
+    }
 
-
-    static void perguntas() { //Execucao da ação do inimigo Golpear 
+    static void ataqueMiniBoss() { //Execucao da ação do inimigo Golpear 
+         
         ArrayList<Integer> perguntas = new ArrayList<>(); // Array de perguntas do inimigo
         perguntas.add(1);
         perguntas.add(2);
@@ -172,10 +303,12 @@ public class Haftahell {
         double num = entrada.nextDouble();
         if (respostas.get(numPergunta) == num) 
         System.out.println("Resposta correta, você desviou do golpe do inimigo");
-        else 
+        else {
         System.out.println("Resposta Incorreta, a resposta correta é " + respostas.get(numPergunta ) + " você tomou o dano inteiro do inimigo");
-                
+        vidaPersonagem= vidaPersonagem - DanoInimigo;       
+        System.out.format("Sua vida atual é %d\n", vidaPersonagem);
 }
+    }
 
     static void menu() { // Comando que executa o menu do Jogo, primeira coisa que irá aparecer ao jogador
         int escolha;
@@ -185,7 +318,7 @@ public class Haftahell {
             System.out.println("2 - Cápitulos");
             System.out.println("3 - Créditos");
             System.out.println("4 - Sair");
-            escolha = entrada.nextInt();
+            escolha = Random.nextInt();
 
             switch (escolha) {
                 case 1 ->
@@ -199,6 +332,41 @@ public class Haftahell {
                 default -> System.out.println("Digite um número válido");
             }
         } while (escolha > 0 && escolha >= 5);
+    }
+    static void combate() {
+        
+        do {
+            combatePersonagem();
+            combateInimigo();
+            if (vidaCriatura <0 || vidaPersonagem < 0) 
+                break;
+        } while ((vidaCriatura >0 || vidaPersonagem >0));
+        
+        
+        if (vidaPersonagem < 0)
+            System.out.println("Você morreu pro inimigo, seu burro");
+        else if (vidaCriatura < 0)
+            System.out.println("Boa, tu matou o fdp");
+    }
+    static void curarPersonagem(){
+        if (healthPotion == 0 || healthPotion < 0) {
+                    System.out.println("Voce nao tem mais pocoes disponiveis, se fudeu");
+                } else {
+                 vidaPersonagem+=24;   
+                 healthPotion -=1;
+                System.out.format("Sua vida atual e %d\n", vidaPersonagem);
+                System.out.format("Voce so tem mais %d pocoes\n", healthPotion);
+                }
+    }
+     static void curarInimigo(){
+        if (healthPotionEnemy == 0 || healthPotionEnemy < 0) {
+                    System.out.println("O inimigo não tem mais poções");
+                } else {
+                 vidaCriatura+=24;   
+                 healthPotion -=1;
+                System.out.format("A vida atual do inimigo é  %d\n", vidaCriatura);
+                System.out.format("O inimigo so tem mais %d pocoes\n", healthPotionEnemy);
+                }
     }
 }
 
