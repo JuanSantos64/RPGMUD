@@ -6,41 +6,18 @@ import java.util.Scanner;
 
 import java.util.ArrayList;
 
-public class RPG {
+public class Haftahell {
 
     static Scanner entrada = new Scanner(System.in);
     static String nome;
 
     public static void main(String[] args) {
-
+       menu();
+        System.out.println("Vc encontra um inimigo, ataque ele!!!");
         perguntas();
-        int escolha;
-        do {
-            System.out.println(" === Menu === ");
-            System.out.println("1 - Iniciar");
-            System.out.println("2 - Cápitulos");
-            System.out.println("3 - Créditos");
-            System.out.println("4 - Sair");
-            escolha = entrada.nextInt();
-
-            switch (escolha) {
-                case 1:
-                    historiaPrologo();
-                    break;
-                case 2:
-                    escolha2();
-                    break;
-                case 3:
-                    System.out.println("Caique, Cleiton, Henrique, Juan e Maicon");
-                    break;
-                case 4:
-                    System.out.println("Obrigado por jogar nosso jogo, esperamos voce mais tarde!");
-
-            }
-        } while (escolha > 0 && escolha >= 5);
     }
 
-    static void historiaPrologo() { // Inicia o começo da Historia do RPG
+    public static void historiaPrologo() { // Inicia o começo da Historia do RPG
         System.out.println("Olá! Nosso código funciona com um sistema que é necessário apertar enter para que apareca o proximo dialogo,\n voce precisara apertar enter entre os dialogos, sempre que aparecer essa mensagem (Enter...) ");
         pressioneEnterParaContinuar(entrada);
         System.out.println("Você acorda em um quarto em branco. Ele não tem começo nem fim. A claridade faz seus olhos se incomodarem, mas logo se acostumam. Você se encontra confuso por não saber onde está e nem quem é.");
@@ -82,7 +59,7 @@ public class RPG {
         pressioneEnterParaContinuar(entrada);
     }
 
-    private static void pressioneEnterParaContinuar(Scanner entrada) {
+    static void pressioneEnterParaContinuar(Scanner entrada) {
         System.out.println("Enter...");
         entrada.nextLine(); // Aguarda até que o usuário pressione Enter
     }
@@ -91,23 +68,18 @@ public class RPG {
         Random dado = new Random();
         int dado20Faces = dado.nextInt(4);
         switch (dado20Faces) {
-            case 1:
-                System.out.println("Golpear");
-                break;
-            case 2:
-                System.out.println("Curar");
-                break;
-            case 3:
-                System.out.println("Mágia");
-                break;
-            case 4:
-                System.out.println("Fugir");
-                break;
+            case 1, 3 -> {
+                System.out.println("O inimigo escolheu golpear");
+                perguntas();
+            }
+            case 2 -> System.out.println("O inimigo escolheu curar");
+            case 4 -> System.out.println("O inimigo escolheu fugir");
         }
     }
+    
 
     static void escolha2() { //Tela ao selecionar a opção capitulos do menu.
-        System.out.println("1 - Cápitulo 0");
+        System.out.println("1 - Prólogo");
         System.out.println("2 - Cápitulo 1");
         System.out.println("3 - Capitulo 2");
         System.out.println("4 - Capitulo 3");
@@ -116,22 +88,18 @@ public class RPG {
         int escolha = entrada.nextInt();
 
         switch (escolha) { // Escolha dos capitulos
-            case 1:
-
+            case 1 -> {
+                System.out.println("Você está entrando no primeiro capitulo do jogo, chamado de Prólogo, boa sorte!");
                 historiaPrologo();
-                break;
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-                System.out.println("Ainda não temos esses capitulos XD");
-                break;
+            }
+            case 2, 3, 4, 5, 6 -> System.out.println("Ainda não temos esses capitulos XD");
         }
-    }
+        // Escolha dos capitulos
+            }
 
-    static void perguntas() { // Array de perguntas que o inimigo pode fazer;
-        ArrayList<Integer> perguntas = new ArrayList<>();
+
+    static void perguntas() { //Execucao da ação do inimigo Golpear 
+        ArrayList<Integer> perguntas = new ArrayList<>(); // Array de perguntas do inimigo
         perguntas.add(1);
         perguntas.add(2);
         perguntas.add(3);
@@ -153,71 +121,84 @@ public class RPG {
         perguntas.add(19);
         perguntas.add(20);
         int n = perguntas.size();
-        Random pergunta = new Random(); //Randomificação das perguntas que o inimigo pode executar ao ser randomificado a opção ataque;
+        Random pergunta = new Random(); //Randomificação das perguntas que o inimigo pode executar ao ser randomificado a opção ataque
         int numPergunta = pergunta.nextInt(n);
-
         switch (numPergunta) { // A randomificação do array sairá aqui e será escolhido a pergunta
-            case 0:
-                System.out.println("Quanto é 1 + 1?");
-                break;
-            case 1:
-                System.out.println("Quanto é 2 + 2?");
-                break;
-            case 2:
-                System.out.println("Quanto é 3 + 3?");
-                break;
-            case 3:
-                System.out.println("Quanto é 3 + 3?");
-                break;
-            case 4:
-                System.out.println("Quanto é 3 + 3?");
-                break;
-            case 5:
-                System.out.println("Quanto é 3 + 3?");
-                break;
-            case 6:
-                System.out.println("Quanto é 3 + 3?");
-                break;
-            case 7:
-                System.out.println("Quanto é 3 + 3?");
-                break;
-            case 8:
-                System.out.println("Quanto é 3 + 3?");
-                break;
-            case 9:
-                System.out.println("Quanto é 3 + 3?");
-                break;
-            case 10:
-                System.out.println("Quanto é 3 + 3?");
-                break;
-            case 11:
-                System.out.println("Quanto é 3 + 3?");
-                break;
-            case 12:
-                System.out.println("Quanto é 3 + 3?");
-                break;
-            case 13:
-                System.out.println("Quanto é 3 + 3?");
-                break;
-            case 14:
-                System.out.println("Quanto é 3 + 3?");
-                break;
-            case 15:
-                System.out.println("Quanto é 3 + 3?");
-                break;
-            case 16:
-                System.out.println("Quanto é 3 + 3?");
-                break;
-            case 17:
-                System.out.println("Quanto é 3 + 3?");
-                break;
-            case 18:
-                System.out.println("Quanto é 3 + 3?");
-                break;
-            case 19:
-                System.out.println("Quanto é 3 + 3?");
-                break;
-        }
+        case 0 -> System.out.println("Quanto é 1 + 1?");
+        case 1 -> System.out.println("Quanto é 2 + 2?");
+        case 2 -> System.out.println("Quanto é 3 + 3?");
+        case 3 -> System.out.println("Quanto é 4 + 4?");
+        case 4 -> System.out.println("Quanto é 5 + 5?");
+        case 5 -> System.out.println("Quanto é 6 + 6?");
+        case 6 -> System.out.println("Quanto é 7 + 7?");
+        case 7 -> System.out.println("Quanto é 8 + 8?");
+        case 8 -> System.out.println("Quanto é 9 + 9?");
+        case 9 -> System.out.println("Quanto é 10 + 10?");
+        case 10 -> System.out.println("Quanto é 11 + 11?");
+        case 11 -> System.out.println("Quanto é 12 + 12?");
+        case 12 -> System.out.println("Quanto é 13 + 13?");
+        case 13 -> System.out.println("Quanto é 14 + 14?");
+        case 14 -> System.out.println("Quanto é 15 + 15?");
+        case 15 -> System.out.println("Quanto é 16 + 16?");
+        case 16 -> System.out.println("Quanto é 17 + 17?");
+        case 17 -> System.out.println("Quanto é 18 + 18?");
+        case 18 -> System.out.println("Quanto é 19 + 19?");
+        case 19 -> System.out.println("Quanto é 20 + 20?");
     }
-
+    
+        // A randomificação do array sairá aqui e será escolhido a pergunta
+        ArrayList<Integer> respostas = new ArrayList<>(); // Array das respostas das perguntas do inimigo
+        respostas.add(2);
+        respostas.add(4);
+        respostas.add(6);
+        respostas.add(8);
+        respostas.add(10);
+        respostas.add(12);
+        respostas.add(14);
+        respostas.add(16);
+        respostas.add(18);
+        respostas.add(20);
+        respostas.add(22);
+        respostas.add(24);
+        respostas.add(26);
+        respostas.add(28);
+        respostas.add(30);
+        respostas.add(32);
+        respostas.add(34);
+        respostas.add(36);
+        respostas.add(38);
+        respostas.add(40);
+        System.out.println("Digite a resposta correta! ");
+        double num = entrada.nextDouble();
+        if (respostas.get(numPergunta) == num) 
+        System.out.println("Resposta correta, você desviou do golpe do inimigo");
+        else 
+        System.out.println("Resposta Incorreta, a resposta correta é " + respostas.get(numPergunta ) + " você tomou o dano inteiro do inimigo");
+                
 }
+
+    static void menu() { // Comando que executa o menu do Jogo, primeira coisa que irá aparecer ao jogador
+        int escolha;
+        do {
+            System.out.println(" === Menu === ");
+            System.out.println("1 - Iniciar");
+            System.out.println("2 - Cápitulos");
+            System.out.println("3 - Créditos");
+            System.out.println("4 - Sair");
+            escolha = entrada.nextInt();
+
+            switch (escolha) {
+                case 1 ->
+                    historiaPrologo();
+                case 2 ->
+                    escolha2();
+                case 3 ->
+                    System.out.println("Caique, Cleiton, Henrique, Juan e Maicon"); // Créditos
+                case 4 ->
+                    System.out.println("Obrigado por jogar nosso jogo, esperamos voce mais tarde!"); // Sair do jogo
+                default -> System.out.println("Digite um número válido");
+            }
+        } while (escolha > 0 && escolha >= 5);
+    }
+}
+
