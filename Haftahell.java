@@ -1,4 +1,4 @@
-package RPGdosCara;
+package rpgdoscara;
 
 import java.util.Random;
 
@@ -19,8 +19,8 @@ public class Haftahell {
     static int healthPotion = 3;
     static int healthPotionEnemy = 3;
     public static void main(String[] args) {
-        combate();
         menu();
+        
     }
 
     public static void historiaPrologo() { // Inicia o começo da Historia do RPG
@@ -32,7 +32,7 @@ public class Haftahell {
         pressioneEnterParaContinuar(entrada);
         System.out.println("Os números se juntam com letras e você começa a interpretá-las.");
         pressioneEnterParaContinuar(entrada);
-        System.out.println("“ Em eras ancestrais, quando a magia da matemática era desvelada,\n tecemos os fios do conhecimento para desvendar os segredos dos números divinos. \nE assim nasceram os \"Conjuntos Místicos\", onde os números se agrupavam em esferas mágicas. \nDentro delas, encontrávamos os Numéricos Naturais, Inteiros, Racionais, Irracionais e Reais. Qual destes conjuntos os números místicos?\n"
+        System.out.println("“Em eras ancestrais, quando a magia da matemática era desvelada,\n tecemos os fios do conhecimento para desvendar os segredos dos números divinos. \nE assim nasceram os \"Conjuntos Místicos\", onde os números se agrupavam em esferas mágicas. \nDentro delas, encontrávamos os Numéricos Naturais, Inteiros, Racionais, Irracionais e Reais. Qual destes conjuntos os números místicos?\n"
                 + "Estranhamente você sabe a resposta e responde sussurando:");
         pressioneEnterParaContinuar(entrada);
         System.out.println("“Reais”. É, e pensar que eu iria encontrar a matemática em um lugar como esse.");
@@ -93,7 +93,7 @@ static void combatePersonagem() { //Decisões do turno do personagem
         System.out.println("== Seu turno ==");
         System.out.println("1 - Golpear");
         System.out.println("2 - Curar");
-        System.out.println("3 - Fugir");
+        
         System.out.println("===============");
         int escolha = entrada.nextInt();
         switch (escolha) {
@@ -106,10 +106,7 @@ static void combatePersonagem() { //Decisões do turno do personagem
                 curarPersonagem();
                 
             }
-            case 3 -> {
-                System.out.println("Você escolheu fugir");
-                System.out.println("Você fugiu covardemente, seu inimigo está rindo de vc agr");
-        }
+            
             default -> System.out.println("Você não escolheu um número válido");
         }
         
@@ -317,8 +314,9 @@ static void combatePersonagem() { //Decisões do turno do personagem
             System.out.println("1 - Iniciar");
             System.out.println("2 - Cápitulos");
             System.out.println("3 - Créditos");
-            System.out.println("4 - Sair");
-            escolha = Random.nextInt();
+            System.out.println("4 - Combate");
+            System.out.println(" ============ ");
+            escolha = entrada.nextInt();
 
             switch (escolha) {
                 case 1 ->
@@ -328,24 +326,25 @@ static void combatePersonagem() { //Decisões do turno do personagem
                 case 3 ->
                     System.out.println("Caique, Cleiton, Henrique, Juan e Maicon"); // Créditos
                 case 4 ->
-                    System.out.println("Obrigado por jogar nosso jogo, esperamos voce mais tarde!"); // Sair do jogo
+                    combate(); // Sair do jogo
                 default -> System.out.println("Digite um número válido");
             }
         } while (escolha > 0 && escolha >= 5);
     }
     static void combate() {
         
-        do {
+        while ((vidaCriatura >0 || vidaPersonagem >0)){
             combatePersonagem();
-            combateInimigo();
-            if (vidaCriatura <0 || vidaPersonagem < 0) 
+            if (vidaCriatura <=0 || vidaPersonagem <= 0) 
                 break;
-        } while ((vidaCriatura >0 || vidaPersonagem >0));
+            combateInimigo();
+            
+       
+        }
         
-        
-        if (vidaPersonagem < 0)
+        if (vidaPersonagem <= 0)
             System.out.println("Você morreu pro inimigo, seu burro");
-        else if (vidaCriatura < 0)
+        else if (vidaCriatura <= 0)
             System.out.println("Boa, tu matou o fdp");
     }
     static void curarPersonagem(){
@@ -363,10 +362,9 @@ static void combatePersonagem() { //Decisões do turno do personagem
                     System.out.println("O inimigo não tem mais poções");
                 } else {
                  vidaCriatura+=24;   
-                 healthPotion -=1;
+                 healthPotionEnemy -=1;
                 System.out.format("A vida atual do inimigo é  %d\n", vidaCriatura);
                 System.out.format("O inimigo so tem mais %d pocoes\n", healthPotionEnemy);
                 }
     }
 }
-
