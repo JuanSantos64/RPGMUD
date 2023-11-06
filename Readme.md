@@ -2,6 +2,8 @@
 # ⚜ Haftafell - RPG
 Sejam bem vindos ao nosso RPG!
 
+![Logo](https://media.discordapp.net/attachments/1148430124161699931/1157145409437847672/a-teenager-in-an-all-white-place-looking-at-magical-mathematical-numbers-in-the-air-with-the-color--556842189.png?ex=6556d324&is=65445e24&hm=096d241eacd6ae0d96f8d25f8d08da3d75733bcae16c570174189c51ef2f7d87&=&width=453&height=453)
+
 Nesse jogo, vc acompanhará uma narrativa em um mundo imersivo atravez de batalhas emocionantes, com foco no seu aprendizado em matematica, nosso principal objetivo, é tornar o ensinamento da matematica em algum divertido e compreensivo.
 
 ## 📖 Um pouco mais sobre a historia do jogo
