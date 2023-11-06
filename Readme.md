@@ -39,15 +39,25 @@ Durante o decorrer da historia, terão momentos de combate, e caso o usuario per
 
 Agradecimento aos excepcionais profissionais [Caike Jesus](https://www.linkedin.com/in/caike-jesus-5a37921b2), [Juan Santos](https://www.linkedin.com/in/juan-santos-28a001288/) e [Maicon Silva](https://www.linkedin.com/in/maicon-silva-888090212/) pelo desenvolvimento desse excelente e envolvente código.
 ### 👨‍💻 Conheça os integrantes
-[Caike Jesus](https://www.linkedin.com/in/caike-jesus-5a37921b2)
+Caike Jesus
 
-[Cleiton Fiuza](https://www.linkedin.com/in/cleiton-fiuza-souza-42a553193/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/caike-jesus-5a37921b2)
 
-[Henrique Leal](https://www.linkedin.com/in/henrique-leal-28733b1b5/)
+Cleiton Fiuza
 
-[Juan Santos](https://www.linkedin.com/in/juan-santos-28a001288/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/cleiton-fiuza-souza-42a553193/)
 
-[Maicon Silva](https://www.linkedin.com/in/maicon-silva-888090212/)
+Henrique Leal
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/henrique-leal-28733b1b5/)
+
+Juan Santos
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/juan-santos-28a001288/)
+
+Maicon Silva
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/maicon-silva-888090212/)
 ## 👨‍🎓 Aprendizados
 
 O desenvolvimento desse RPG foi excepcionalmente emocionante e incrivel, nossa equipe pode adquirir experiencias indispensáveis, como:
