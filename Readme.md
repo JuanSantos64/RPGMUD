@@ -25,7 +25,6 @@ Uma das mecanicas desenvolvida foi o pulo de diálogo, para que a historia não 
 
 ```bash
  static void enter(Scanner entrada) {
-        System.out.println("Enter...");
         entrada.nextLine(); // Aguarda até que o usuário pressione Enter
     }
 ```
@@ -36,6 +35,51 @@ Durante o desenvolvimento do jogo, estivemos pensando a todo momento, como seria
 
 Ao atacar, o usuario terá que responder uma pergunta corretamente para que possa aplicar o dano, no turno da maquina ela também tera essas opções, porém será escolhido de maneira aleátoria.
 
+```bash
+        while ((vidaCriatura > 0 || vidaPersonagem > 0)) { // Roda infinitamente até que um dos dois (inimigo ou jogador) tome um dano fatal ou seja, suas vidas chegarem a 0
+            combatePersonagemFacil();
+            combateInimigoFacil();
+        }
+
+        if (vidaPersonagem <= 0) { // Se o jogador morrer, aparece essa mensagem
+            System.out.println("Você morreu pro golem, você não parece ser o escolhido");
+        } else if (vidaCriatura <= 0) { // Se o inimigo morrer, aparece essa mensagem
+            System.out.println("Boa, você derrotou o golem");
+        }
+```
+
+#### 🖥 Imagem ASCII
+
+Decidimos adicionar imagens ASCII para maior imersão no código com uma previsualização dos inimigos, onde aparece o visual do inimigo e o seu nome logo acima
+
+```bash
+        System.out.println("                                        \n" +
+"                 @@&&&/                 \n" +
+"                 &###%&                 \n" +
+"         @.@&(  #&&/#%&%. @@@           \n" +
+"       @&%%&%%%&&&#(%#@%&%%&@@&         \n" +
+"      %&%&(%@%%%#%&#%#%#%%%%%&&@&       \n" +
+"   (   @@&@%@&%&(&&##((%(@(%@&@@.       \n" +
+" .&@@&@%#%&@&&&&%&&((#&@#&%@%&#%%@&.   ,\n" +
+" *&&@&&&#&&@*@@@@&&%%%&#&@&@@&&%&&%&%&@%\n" +
+"  &&%&&&.     @&%&@&&&@&@@      %&&&&&#@\n" +
+" &&@&@@&      ,&&&&&&&%#&&      @&&%@%& \n" +
+" /&%%&%     ,& &%&&@&&&%&*&#      &&%&@,\n" +
+" @&%&@       &%%@&&@@@&@%&&&,      &%&, \n" +
+" @&&#&%*     &&%&&@@&@&&&@&@@     %(&%. \n" +
+"   &%& &   %&&&&&&#&&&@%&@&&@@    %,@@# \n" +
+"   #%%&   @@&@&&@@@@&@@&@@&%%&&    #@%/ \n" +
+"          @&&&@&@@@@###@@&@#%&&@        \n" +
+"         @&%&%&@&@     @@&&@@&&&&@      \n" +
+"        &%@@%%&(         @#%&#&&&@      \n" +
+"      , &&%@&%            #@#@&&%&      \n" +
+"      %&%%%@&/              &%&&@&(     \n" +
+"     @@%@@@&.              ,&@@&&@&#    \n" +
+"    &@&&&@@                  &@&&&@%    \n" +
+"    &&%&&@                    @&&@@     \n" +
+"   &@@&#&                      @&&%     \n" +
+"   @@@%#@                      @&%&&(  ");
+```
 #### 📍 Checkpoint
 
 Durante o decorrer da historia, terão momentos de combate, e caso o usuario perca, utilizamos métodos para que ele não volte ao começo do jogo, mas sim para o começo do capitulo.
@@ -75,3 +119,4 @@ O desenvolvimento desse RPG foi excepcionalmente emocionante e incrivel, nossa e
 
 ![Logo](https://media.discordapp.net/attachments/1148430124161699931/1157144010280935444/RPG_CAPA.png?ex=654d9756&is=653b2256&hm=836fa56b27e4b8c47063ba03111fb30be360db831e180f21ef3f7a1b5c956528&=&width=453&height=453)
 
+#### Obrigado pela leitura ❤ 
