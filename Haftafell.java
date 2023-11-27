@@ -1,8 +1,25 @@
 package rpgdoscara;
 
 /**
- * authors: Cleiton, Caique, Henrique, Juan e Maicon Acompanhe o projeto em
- * nosso GitHub: https://github.com/JuanSantos64/Grupo-6---Turma-A
+ * ******ESSE PROJETO FOI FEITO PARA SER RODADO NA IDE Apache NetBeans IDE 19******
+ * Olá, tudo bem? Se você estiver tentando entender esse código e não estiver conseguindo entender ou quer um guia para navegar por ele aqui está:
+ * 
+ *                                                                  FUNÇÕES DE INTERFACE DE MENU --- Linha 69
+ *                                                                  FUNÇÕES DE CAPÍTULOS --- Linha 152
+ *                                                                  FUNÇÕES DE DESAFIO --- Linha 444
+ *                                                                  FUNÇÕES DE COMBATE --- Linha 570
+ * 1 -"FUNÇÕES DE INTERFACE DE MENU" - As primeiras funções aparente são as funções para que o menu ocorra sem erros, sinta-se livre para explorar.
+ * 
+ * 2 - "FUNÇÕES DE CAPÍTULOS" - As proximas funções que aparecem são as funções que contém a historia do jogo, dividida em capítulos e cenas dentro dos capítulos e a função para pular o diálogo.
+ * 
+ * 3 - "FUNÇÕES DE DESAFIO" - Logo depois, temos as funções responsaveis para o uso dos desafios durante a história do RPG
+ * 
+ * 4 - "FUNÇÕES DE COMBATE" -  Nosso ultimo conjunto de funções são relacionadas ao combate feito por turno que ocorre durante a historia.
+ * 
+ * Esse foi um breve indice para que se possa navegar mais precisamente pelo código!
+ * 
+ * Acompanhe o projeto e uma breve explicação sobre ele no nosso repositório do GitHub: 
+ * https://github.com/JuanSantos64/Grupo-6---Turma-A
  */
 import java.util.Random;
 
@@ -38,6 +55,7 @@ public class Haftafell {
     static final String cyan = "\u001B[36m";
     // Cores para o terminal
 
+    // Inicio da função Main
     /**
      * Classe que executa o RPG
      *
@@ -45,15 +63,103 @@ public class Haftafell {
      */
     public static void main(String[] args) {
         menu(); // Começa a rodar o jogo a partir do menu!
-        finalDoJogo();
+        créditos(); // Roda os créditos do jogo!
     }
+    // Fim da função Main
+    
+    // *--* 1 - FUNÇÕES DE INTERFACE DO MENU *--*
+    
+    // Inicio das funções de interface do menu
+    /**
+     * Classe que gera o menu inicial do jogo!
+     */
+    static void menu() { // Comando que executa o menu do Jogo, primeira coisa que irá aparecer ao jogador
+        int escolhaMenu; // Inicialização da variável
+        do { // Inicia o menu mostrando as seguintes informações na tela
+            System.out.println(" === Menu === ");
+            System.out.println("1 - Instruções");
+            System.out.println("2 - Jogar");
+            System.out.println("3 - Créditos");
+            System.out.println("4 - Sair");
+            System.out.println(" ============ ");
+            escolhaMenu = entrada.nextInt(); // Armazena a escolha do usuário sobre o menu
+
+            switch (escolhaMenu) { // Faz um switch case da escolha para redirecionar o usuário para o local desejado
+                case 1: 
+                    instrucoes();
+                break;
+                case 2:
+                    jogar();
+                    break;
+                case 3:
+                    créditos();
+                    menu();
+                break;
+                case 4:
+                    break;
+                    default: 
+                    System.out.println("Digite um número válido");
+                    menu();
+                break;
+            }
+        } while (escolhaMenu > 0 && escolhaMenu >= 5);
+    }
+    /**
+     * Classe que contém as intruções do menu
+     */
+    static void instrucoes(){
+                System.out.println("Olá! Nosso código funciona com um sistema que é necessário apertar enter para que apareca o proximo dialogo. ");
+                menu();
+    }
+    
+    /**
+     * Classe que contém o inicio do jogo
+     */
+    static void jogar(){
+        int escolhaJogar; // Inialização da variável que será utilizado para escolha
+        System.out.println("1 - Jogar");
+        System.out.println("2 - Capitulo 1");
+        System.out.println("3 - Capitulo 2");
+        escolhaJogar = entrada.nextInt();
+        switch (escolhaJogar){
+            case 1:
+                historiaCapitulo1();
+                historiaCapitulo2();
+                break;
+            case 2:
+                historiaCapitulo1();
+                menu();
+                break;
+            case 3: 
+                historiaCapitulo2();
+                menu();
+                break;
+            default:
+                jogar();
+        }
+    }
+
+    /**
+     * Classe que contém os créditos que é mostrado ao fim do jogo
+     */
+    static void créditos() { 
+        // Roda os créditos
+        System.out.println("Obrigado por jogar nosso jogo! Ficamos muito agradecidos que você chegou até o final dele!");
+        System.out.println("Espero que tenha gostado e que tenha aprendido algo ;-)");
+        System.out.println("Criadores: Caique, Cleiton, Henrique, Juan e Maicon");
+    }
+    // Fim das funções de interface do menu
+
+    // *--* 2 - FUNÇÕES DE CAPITULOS *--*
+    
+    // Inicio das funções de capitulos
     /**
      * Classe que contêm o primeiro capitulo do jogo
      */
     public static void historiaCapitulo1() { // Inicia o começo da Historia do RPG
-        String nome;
+        String nomeJogador ; // Inicialização da variável que será utilizada para armazenar o nome do jogador
         System.out.println("Olá! Nosso código funciona com um sistema que é necessário apertar enter para que apareca o proximo dialogo. ");
-        enter(entrada);
+        enter(entrada); // Chamada da função que pula o diálogo ao apertar enter
         System.out.println("Você acorda em um quarto em branco. Ele não tem começo nem fim. \nA claridade faz seus olhos se incomodarem, mas logo se acostumam. \nVocê se encontra confuso por não saber onde está e nem quem é.");
         enter(entrada);
         System.out.println("Uma luz azul contorna o ar. Runas aparecem diante de você. \nElas lembram números, mas \"estão escritas de formas diferentes?\"");
@@ -63,11 +169,10 @@ public class Haftafell {
         System.out.println("“Em eras ancestrais, quando a magia da matemática era desvelada,\ntecemos os fios do conhecimento para desvendar os segredos dos números divinos. \nE assim nasceram os \"Conjuntos Místicos\", onde os números se agrupavam em esferas mágicas. \nDentro delas, encontrávamos os Numéricos Naturais, Inteiros, Racionais, Irracionais e Reais. \nQual destes conjuntos os números místicos pertence o número PI??\n"
                 + "Estranhamente você sabe a resposta e responde sussurando:");
         System.out.println(cyan + "Digite a resposta: " + fim);
-        String resposta = entrada.next();
-        String respostaparaVerificação = resposta.toLowerCase();
-        if (respostaparaVerificação.equals("irracionais")) {
+        String resposta = entrada.next(); // Armazena a resposta do usuário sobre a pergunta acima
+        String respostaparaVerificação = resposta.toLowerCase(); // Coloca a resposta do usuário para caracteres minusculos
+        if (respostaparaVerificação.equals("irracionais")) { // Verifica se a resposta está correta
             System.out.println("É, e pensar que eu iria encontrar a matemática em um lugar como esse.");
-
         } else {
             System.out.println("“Irracionais”. É, e pensar que eu iria encontrar a matemática em um lugar como esse.");
             enter(entrada);
@@ -82,12 +187,12 @@ public class Haftafell {
         System.out.println("O Ser cai em gargalhada respondendo:\n"
                 + "-“Quem sou eu?’ Que espetáculo! Uma pergunta interessante … Primeiro me diga, quem é você?");
         System.out.println("Digite seu nome: ");
-        nome = entrada.next();
+        nomeJogador  = entrada.next(); // Armazena o nome do jogador
         System.out.println("Ao falar o seu nome você entra em hipnose, e uma voz explica com detalhes o presente o passado desse mundo.");
         enter(entrada);
         System.out.println("Bem-vindo ao mundo de Haftafell!");
         enter(entrada);
-        System.out.println(nome + ", o escolhido…");
+        System.out.println(nomeJogador  + ", o escolhido…"); 
         enter(entrada);
         System.out.println("O mundo de Haftafell, um lugar vasto e misterioso, repleto de magia e maravilhas. \nEm Haftafell, a Matemática é considerada a linguagem sagrada perdida, \num conhecimento tão poderoso que se acredita ter sido dado aos mortais por deuses antigos.");
         enter(entrada);
@@ -103,7 +208,7 @@ public class Haftafell {
         enter(entrada);
         System.out.println("O passado tumultuado de Haftafell, marcado pela ascensão e queda da Matemática Divina, \nestabelece o cenário para a jornada dos jogadores em busca do conhecimento perdido \ne a luta para proteger o mundo de uma nova ameaça, \nenquanto lidam com os traumas e preconceitos do passado.");
         enter(entrada);
-        System.out.println("O " + nome + " estava imerso em pensamentos, tentando assimilar tudo o que havia aprendido sobre Haftafell e a Matemática Divina. \nA entidade misteriosa que estava agora diante dele parecia estar aguardando uma resposta a sua pergunta: \"Quem é você?\"");
+        System.out.println("O " + nomeJogador  + " estava imerso em pensamentos, tentando assimilar tudo o que havia aprendido sobre Haftafell e a Matemática Divina. \nA entidade misteriosa que estava agora diante dele parecia estar aguardando uma resposta a sua pergunta: \"Quem é você?\"");
         enter(entrada);
         System.out.println("Com uma sensação de déjà vu, o protagonista respondeu mais uma vez, pronunciando seu nome. \nUma onda de calma o envolveu enquanto imagens do passado de Haftafell se desenrolavam diante de seus olhos.");
         enter(entrada);
@@ -123,7 +228,11 @@ public class Haftafell {
         enter(entrada);
     }
 
+    /**
+     * Classe que contêm o segundo capitulo do jogo
+     */
     public static void historiaCapitulo2() { // Segundo cápitulo da historia do RPG
+        int escolhaCapitulo2; // Inicialização da varíavel que será utilizada para as escolhas desse capítulo
         System.out.println("Capítulo 2: A Jornada");
         enter(entrada);
         System.out.println("Após abrir o pergaminho você é teletransportado e se encontra diante da imponente cidade de Midland, uma simples cidade, mas interessante.\nAs ruas movimentadas exalam uma atmosfera agitada, o doce aroma das comidas sendo feitas pelos mercadores te encanta e te faz perder o foco, mas você logo volta a seu caminho. \nO pergaminho aponta para a cidade, você precisa encontrar mais pistas.");
@@ -136,8 +245,8 @@ public class Haftafell {
         System.out.println("Escolha seu caminho digitando o número correspondente.");
         System.out.println(yellow + "1 - Cena 1: Explorar a Praça Central" + fim);
         System.out.println(yellow + "2 - Cena 2: Conversar com os habitantes locais." + fim);
-        int escolha = entrada.nextInt();
-        switch (escolha) {
+        escolhaCapitulo2 = entrada.nextInt(); // Armazena a escolha
+        switch (escolhaCapitulo2) { // Faz um switch case da escolha do jogador
             case 1 -> {
                 historiaCapitulo2Cena1();
             }
@@ -150,109 +259,21 @@ public class Haftafell {
         }
 
     }
-    static void desafio1(){
-        System.out.println("=== Desafio ===");
-        System.out.println("Quanto é 2020 elevado a 0 ?");
-        System.out.println("1 - 0");
-        System.out.println("2 - 1");
-        System.out.println("3 - 2020");
-        int escolhaaa = entrada.nextInt();
-        switch (escolhaaa) {
-            case 2 ->
-                System.out.println("Após resolver o desafio uma luz surge em volta da árvore, \nformando uma espécie de globo, o tempo lá fora parece estar passando devagar...");
-            default -> {
-                System.out.println("Você errou meu querido, estamos reiniciando a pergunta");
-                desafio1();
-            }
-        }
-        
-    }
-    static void desafio2(){
-                        System.out.println("=== Desafio ===");
-                System.out.println("Qual a teoria que diz:");
-                System.out.println("A soma dos quadrados dos catetos é igual ao quadrado da hipotenusa");
-                System.out.println("1 - Teoria de pitágoras");
-                System.out.println("2 - Teoria de platão");
-                System.out.println("3 - Teoria de aristóteles");
-                int escolha = entrada.nextInt();
-                 switch (escolha) {
-                    case 1 ->
-                        System.out.println("Parece realmente conhece sobre o nosso mundo, aqueles que estão acima do céu escolheram bem!");
-                    default -> {
-                        System.out.println("Errou, você está iniciando novamente a pergunta ");
-                        desafio2();
-                    }
-                }
-    }
-    static void desafio3(){
-                System.out.println("=== Desafio ===");
-                System.out.println("Qual o nome da função da seguinte equação:");
-                System.out.println("F(x) = (1/3)^x + 69");
-                System.out.println("1 - Função Quadrática");
-                System.out.println("2 - Função Exponencial");
-                System.out.println("3 - Função Logáritma");
-                int escolha = entrada.nextInt();
-                if (escolha != 2) {
-                    System.out.println("Errou, você está iniciando novamente o desafio ");
-                    desafio3();
-                }
-                
-    }
-    static void desafio4(){
-        System.out.println("No meu jardim existe 3 pés de alface, 1 de pepino e 5 de cenoura. Quantos pés eu tenho no total?");
-        System.out.println("1 - 3 ");
-        System.out.println("2 - 2");
-        System.out.println("3 - 9");
-        int escolha = entrada.nextInt();
-               switch (escolha) {
-            case 2:
-                System.out.println("Você encontrou uma praça");
-                historiaCapitulo2Cena1();
-                break;
-            default:
-                System.out.println("Você errou, estamos reiniciando o desafio");
-                desafio1();
-                break;
-        }
-    }
-    static void desafio5(){
-        System.out.println("Meu avô tem 5 filhos, cada filho tem 3 filhos. Quantos primos eu tenho?");
-        System.out.println("1 - 12");
-        System.out.println("2 - 15");
-        System.out.println("3 - 3");
-        int a = entrada.nextInt();
-        switch (a){
-                    case 1: 
-                        System.out.println("Um Gênio, eu diria, você finalmente entendeu!  \nO feiticeiro está se mordendo de raiva, ele não pensava alguém teria o conhecimento da Matemática Divina.");
-                        break;
-                    default:
-                        System.out.println("Errado, reiniciando o desafio");
-                        desafio5();
-                }
-    }
-    static void desafio6(){
-        System.out.println("Quando eu tinha 8 anos, a minha irmã tinha a metade da minha idade. \nAgora que tenho 54 anos, com quantos anos minha irmã está?");
-        System.out.println("1 - 58");
-        System.out.println("2 - 51");
-        System.out.println("3 - 50");
-        int a = entrada.nextInt();
-        if (a != 3){
-            desafio6();
-        }
-    }
-
+    // Fim das funções de capitulos
 
     /**
      * Classe que contém a historia da decisão existente no segundo capitulo,
      * caso escolhido cena 1
      */
+    // Inicio das funções de cena
     static void historiaCapitulo2Cena1() {
+        int escolhaCapitulo2Cena1; // Inicialização da variável que será utilizada para as escolhas nesse capitulo
         System.out.println("Ao caminhar pela praça, \nvocê observa um grupo de crianças brincando com pedras brilhantes desenhadas com símbolos matemáticos. \nIntrigado, você se aproxima e pergunta sobre a Matemática Divina. \nUma das crianças menciona um lago perto da cidade que costuma frequentar, diz a pegou de lá…\"");
         System.out.println(yellow + "1 - Perguntar a localização do lago." + fim);
         System.out.println(yellow + "2 - Seguir a viagem." + fim);
         System.out.println("Escolha: ");
-        int escolhaCena1 = entrada.nextInt();
-        if (escolhaCena1 == 1) {
+        escolhaCapitulo2Cena1 = entrada.nextInt(); // Armazena a escolha
+        if (escolhaCapitulo2Cena1 == 1) { // Verifica qual o número digitado pelo usuário
             System.out.println("“Ele fica a 200 passos em direção aonde o sol se põe” disse uma pequena menina de vestido e cabelo bagunçado.");
             System.out.println(yellow + "1 - Ir aonde a pequena menina informou." + fim);
             System.out.println(yellow + "2 - Pegar uma pedra mágica para ver melhor..." + fim);
@@ -261,19 +282,19 @@ public class Haftafell {
 
         } else {
             System.out.println(yellow + "Pegar uma pedra mágica para ver melhor..." + fim);
-        }
+        } 
         System.out.println("A oeste de Midland, você encontra um grande lago. \nMas que estranho, porque tem uma pequena “ilha” no meio? Com uma grande árvore...");
         System.out.println("Ao continuar caminhando você se depara com um pequeno barco na margem do lago, \numa figura estranha com uma silhueta intimidadora e sombria está sentada no barco olhando em direção a “pequena ilha”. \nAo se aproximar exige ele uma moeda, você não entende muito bem. ");
         System.out.println(yellow + "1 - Entregar uma potion " + fim);
         System.out.println(yellow + "2 - Roubar o barco " + fim);
-        int escolhaa = entrada.nextInt();
-        switch (escolhaa) {
+        escolhaCapitulo2Cena1 = entrada.nextInt();
+        switch (escolhaCapitulo2Cena1) {
             case 1 ->
                 System.out.println("Ao entregar uma poção, ele te leva até a ilha, lá você vê mais de perto a árvore gigante, ao centro você encontra uma escrita:");
             case 2 ->
                 System.out.println("Você vai até a ilha, lá você vê mais de perto a árvore gigante, ao centro você encontra uma escrita:");
         }
-        
+
         desafio1();
 
         System.out.println("A terra começa a tremer, \num guardiã que estava debaixo do solo, aparece levantando a árvore que está nas suas costas, \nseu corpo é me rochoso, está coberto de musgo…");
@@ -292,8 +313,8 @@ public class Haftafell {
         enter(entrada);
         System.out.println(yellow + "1 - Perguntar mais sobre o espírito" + fim);
         System.out.println(yellow + "2 - Continuar" + fim);
-        int escolha = entrada.nextInt();
-        switch (escolha) {
+        escolhaCapitulo2Cena1 = entrada.nextInt(); // Armazena a escolha
+        switch (escolhaCapitulo2Cena1) { // Verifica qual o número digitado pelo usuário
             case 1 ->
                 System.out.println("Me chamo Landvaettir, mas pode me chamar de Land! \nMe avisaram que o Escolhido viria para esse mundo, estou aqui para te guiar! \nMas primeiro vamos desvendar a Matemática!");
             case 2 ->
@@ -301,8 +322,8 @@ public class Haftafell {
         }
         System.out.println(yellow + "1 - Desvendar escritas antigas!" + fim);
         System.out.println(yellow + "2 - Derrotar um Golem" + fim);
-        escolha = entrada.nextInt();
-        switch (escolha) {
+        escolhaCapitulo2Cena1 = entrada.nextInt(); // Armazena a escolha
+        switch (escolhaCapitulo2Cena1) { // Verifica qual o número digitado pelo usuário
             case 1 -> {
                 desafio2();
                 desafio3();
@@ -330,10 +351,10 @@ public class Haftafell {
         enter(entrada);
         System.out.println("Com a Visão dos primeiros ela te traz a capacidade de ver a camada da natureza construída.");
         enter(entrada);
-        System.out.println(yellow+"1 - Usar a Visão"+fim);
-        System.out.println(yellow+"2 - Tentar se soltar"+fim);
-        escolha = entrada.nextInt();
-        switch(escolha){
+        System.out.println(yellow + "1 - Usar a Visão" + fim);
+        System.out.println(yellow + "2 - Tentar se soltar" + fim);
+        escolhaCapitulo2Cena1 = entrada.nextInt(); // Armazena a escolha
+        switch (escolhaCapitulo2Cena1) { // Verifica qual o número digitado pelo usuário
             case 1:
                 System.out.println("Ao usar a Visão você consegue enxergar a fórmula que está controlando o vento. \nTente Resolve-la para se desprender.");
                 desafio5();
@@ -341,19 +362,19 @@ public class Haftafell {
             case 2:
                 System.out.println("Você não consegue sair do fluxo, te falta um conhecimento profundo!");
                 desafio5();
-                break;   
+                break;
         }
-        System.out.println(yellow+"1 - Atacar o feiticeiro"+fim);
-        System.out.println(yellow+"2 - Tentar Prende-lo"+fim);
-        escolha = entrada.nextInt();
-        switch(escolha){
-            case 1: 
+        System.out.println(yellow + "1 - Atacar o feiticeiro" + fim);
+        System.out.println(yellow + "2 - Tentar Prende-lo" + fim);
+        escolhaCapitulo2Cena1 = entrada.nextInt(); // Armazena a escolha
+        switch (escolhaCapitulo2Cena1) { // Verifica qual o número digitado pelo usuário
+            case 1:
                 combateDificil();
-        System.out.println("Você causou danos nele, chamas surgem queimando o seu corpo!");
-        enter(entrada);
-        System.out.println("A runa está intacta. Parabéns, jovem mestre, menos um para a conta.");
-        enter(entrada);
-        break;
+                System.out.println("Você causou danos nele, chamas surgem queimando o seu corpo!");
+                enter(entrada);
+                System.out.println("A runa está intacta. Parabéns, jovem mestre, menos um para a conta.");
+                enter(entrada);
+                break;
             case 2:
                 System.out.println("Manipular a matéria ainda é complicado...");
                 enter(entrada);
@@ -370,14 +391,7 @@ public class Haftafell {
                 System.out.println("A runa está intacta. \nParabéns, jovem mestre, menos um para a conta. Muitos desafios estão por vir, são tempos difíceis...");
                 break;
         }
-        
-        
-    }
-    
-    public static void finalDoJogo(){
-            System.out.println("Obrigado por jogar nosso jogo! Ficamos muito agradecidos que você chegou até o final dele!");
-            System.out.println("Espero que tenha gostado e que tenha aprendido algo ;-)");
-            System.out.println("Criadores: Caique, Cleiton, Henrique, Juan e Maicon");
+
     }
 
     /**
@@ -385,17 +399,18 @@ public class Haftafell {
      * caso escolhido cena 2
      */
     static void historiaCapitulo2Cena2() {
+        int escolhaCapitulo2Cenas2;
         System.out.println("Você decide se aproximar de um grupo de habitantes locais em uma taverna. \nAo mencionar a Matemática Divina, um velho ancião menciona uma antiga ruína nos arredores de Midland, \nconhecida por esconder segredos mágicos, mas “apenas boatos” ");
         System.out.println(yellow + "1 - Partir para a Ruína." + fim);
         System.out.println(yellow + "2 - Perguntar por mais detalhes na Taverna." + fim);
-        int escolha = entrada.nextInt();
-        switch(escolha){
+        escolhaCapitulo2Cenas2 = entrada.nextInt(); // Armazena a escolha
+        switch (escolhaCapitulo2Cenas2) { // Verifica qual o número digitado pelo usuário
             case 1:
                 System.out.println("Chegando na ruína você encontra uma montanha de pedras, todas enfileiradas formando um arco. \nVocê se aproxima e ao tocar nela.");
-        enter(entrada);
-        System.out.println("As runas azuis aparecem diante de você.");
-        enter(entrada);
-        break;
+                enter(entrada);
+                System.out.println("As runas azuis aparecem diante de você.");
+                enter(entrada);
+                break;
         }
         System.out.println("O ancião começa a contar uma pequena história: \n“A ruína de Alfheim, a terra dos elfos, por muitos invernos atrás, na era primordial, os elfos guardaram seus segredos. \nA capacidade de moldar a natureza em sua volta os fizeram conquistar o segredo de viver em paz e harmonia, \naté a chegada daqueles asquerosos e gananciosos da Entidade Sombria, aqueles malditos, \nachavam que podiam brincar de ser Deuses, cof, cof... Ah!\nO calafrio me disse que você devia ir até lá”");
         enter(entrada);
@@ -413,7 +428,9 @@ public class Haftafell {
         desafio4();
 
     }
-
+    // Fim das funções de cena
+    
+    // Inicio da função para pular diálogos
     /**
      * Classe que contêm a mecânica de apertar enter para que os dialogos
      * continuem
@@ -423,38 +440,190 @@ public class Haftafell {
     static void enter(Scanner entrada) {
         entrada.nextLine(); // Aguarda até que o usuário pressione Enter
     }
+    // Fim da função para pular diálogos
 
+    // *--* 3 - FUNÇÕES DE DESAFIO *--*
+    
+    // inicio das funções de desafio
+     /**
+     * Classe que contém o primeiro desafio utilizado na historia
+     */
+    static void desafio1() {
+        int escolhaDesafio1; // Inicialização da variável que será utilizado para escolha
+        System.out.println("=== Desafio ===");
+        System.out.println("Quanto é 2020 elevado a 0 ?");
+        System.out.println("1 - 0");
+        System.out.println("2 - 1");
+        System.out.println("3 - 2020");
+        escolhaDesafio1 = entrada.nextInt(); // Armazena o que o usuário digitou
+        switch (escolhaDesafio1) { // Verifica qual opção foi escolhida
+            case 2 ->
+                System.out.println("Após resolver o desafio uma luz surge em volta da árvore, \nformando uma espécie de globo, o tempo lá fora parece estar passando devagar...");
+            default -> {
+                System.out.println("Você errou meu querido, estamos reiniciando a pergunta");
+                desafio1();
+            }
+        }
+
+    }
+
+    /**
+     * Classe que contém o segundo desafio utilizado na historia
+     */
+    static void desafio2() {
+        int escolhaDesafio2; // Inicialização da variável que será utilizado para escolha
+        System.out.println("=== Desafio ===");
+        System.out.println("Qual a teoria que diz:");
+        System.out.println("A soma dos quadrados dos catetos é igual ao quadrado da hipotenusa");
+        System.out.println("1 - Teoria de pitágoras");
+        System.out.println("2 - Teoria de platão");
+        System.out.println("3 - Teoria de aristóteles");
+        escolhaDesafio2 = entrada.nextInt(); // Armazena o que o usuário digitou
+        switch (escolhaDesafio2) { // Verifica qual opção foi escolhida
+            case 1 ->
+                System.out.println("Parece realmente conhece sobre o nosso mundo, aqueles que estão acima do céu escolheram bem!");
+            default -> {
+                System.out.println("Errou, você está iniciando novamente a pergunta ");
+                desafio2();
+            }
+        }
+    }
+
+    /**
+     * Classe que contém o terceiro desafio utilizado na historia
+     */
+    static void desafio3() {
+        int escolhaDesafio3;// Inicialização da variável que será utilizado para escolha
+        System.out.println("=== Desafio ===");
+        System.out.println("Qual o nome da função da seguinte equação:");
+        System.out.println("F(x) = (1/3)^x + 69");
+        System.out.println("1 - Função Quadrática");
+        System.out.println("2 - Função Exponencial");
+        System.out.println("3 - Função Logáritma");
+        escolhaDesafio3 = entrada.nextInt(); // Armazena o que o usuário digitou
+        if (escolhaDesafio3 != 2) { // Verifica qual opção foi escolhida
+            System.out.println("Errou, você está iniciando novamente o desafio ");
+            desafio3();
+        }
+
+    }
+
+    /**
+     * Classe que contém o quarto desafio utilizado na historia
+     */
+    static void desafio4() {
+        int escolhaDesafio4; // Inicialização da variável que será utilizado para escolha
+        System.out.println("No meu jardim existe 3 pés de alface, 1 de pepino e 5 de cenoura. Quantos pés eu tenho no total?");
+        System.out.println("1 - 3 ");
+        System.out.println("2 - 2");
+        System.out.println("3 - 9");
+        escolhaDesafio4 = entrada.nextInt(); // Armazena o que o usuário digitou
+        switch (escolhaDesafio4) { // Verifica qual opção foi escolhida
+            case 2:
+                System.out.println("Você encontrou uma praça");
+                historiaCapitulo2Cena1();
+                break;
+            default:
+                System.out.println("Você errou, estamos reiniciando o desafio");
+                desafio1();
+                break;
+        }
+    }
+
+    /**
+     * Classe que contém o quinto desafio utilizado na historia
+     */
+    static void desafio5() {
+        int escolhaDesafio5; // Inicialização da variável que será utilizado para escolha
+        System.out.println("=== Desafio ===");
+        System.out.println("Meu avô tem 5 filhos, cada filho tem 3 filhos. Quantos primos eu tenho?");
+        System.out.println("1 - 12");
+        System.out.println("2 - 15");
+        System.out.println("3 - 3");
+        escolhaDesafio5 = entrada.nextInt(); // Armazena o que o usuário digitou
+        switch (escolhaDesafio5) { // Verifica qual opção foi escolhida
+            case 1:
+                System.out.println("Um Gênio, eu diria, você finalmente entendeu!  \nO feiticeiro está se mordendo de raiva, ele não pensava alguém teria o conhecimento da Matemática Divina.");
+                break;
+            default:
+                System.out.println("Errado, reiniciando o desafio");
+                desafio5();
+        }
+    }
+
+    /**
+     * Classe que contém o sexto desafio utilizado na historia
+     */
+    static void desafio6() {
+        int escolhaDesafio6;// Inicialização da variável que será utilizado para escolha
+        System.out.println("=== Desafio ===");
+        System.out.println("Quando eu tinha 8 anos, a minha irmã tinha a metade da minha idade. \nAgora que tenho 54 anos, com quantos anos minha irmã está?");
+        System.out.println("1 - 58");
+        System.out.println("2 - 51");
+        System.out.println("3 - 50");
+        escolhaDesafio6 = entrada.nextInt(); // Armazena o que o usuário digitou
+        if (escolhaDesafio6 != 3) { // Verifica se está correto
+            desafio6();
+        }
+    }
+    // Fim das funções de desafio
+
+    // *--* 4 - FUNÇÕES DE COMBATE *--*
+    
+    // Inicio das funções de dano randomica do personagem e do inimigo
+    /**
+     * Classe que contém a randomificação do dano do personagem se ele acertar a
+     * pergunta
+     *
+     * @return numero int randomizado
+     */
+    static int danoPersonagem() {
+        int danoPersonagem = Random.nextInt(13, 25); // Randomiza um número entre 13 e 24 para o dano do personagem principal
+        return danoPersonagem; // retorna o dano
+    }
+
+    /**
+     * Classe que contém a randomificação do dano do inimigo se o personagem
+     * errar a pergunta
+     *
+     * @return numero int randomizado
+     */
+    static int danoInimigo() {
+        int danoInimigo = Random.nextInt(13, 25); // Randomiza um número entre 13 e 24 para o dano do inimigo
+        return danoInimigo; // retorna o dano
+    }
+    // Fim das funções de dano randomica do personagem e do inimigo
+
+    // Inicio das funções de combate do personagem
     /**
      * Classe que gera as opções de turno do personagem principal para o combate
      * facil
      */
     static void combatePersonagemFacil() { //Decisões do turno do personagem
-
-        System.out.println("== Seu turno ==");
-        System.out.println(red + "1 - Golpear" + fim);
+        int escolhaCombatePersonagemFacil; // Inicialização da variavel utilizada
+        System.out.println("== Seu turno =="); // Mostra as opções que o usuário pode fazer no seu turno
+        System.out.println(red + "1 - Golpear" + fim); 
         System.out.println(green + "2 - Curar" + fim);
-
         System.out.println("===============");
-        int escolha = entrada.nextInt();
-        switch (escolha) {
-            case 1 -> {
+        escolhaCombatePersonagemFacil = entrada.nextInt(); // Armazena o valor na variável
+        switch (escolhaCombatePersonagemFacil) { // Verifica as ações que serão tomadas
+            case 1 -> { // Personagem vai golpear, chamar a função ataquePersonagemFacil(), com o parametro danoPersonagem()
                 System.out.println(red + "Voce escolheu golpear" + fim);
                 enter(entrada);
                 ataquePersonagemFacil(danoPersonagem());
             }
-            case 2 -> {
+            case 2 -> { // Personagem vai curar, vai chamar a função curarPersonagem()
                 System.out.println(green + "Voce escolheu curar" + fim);
                 enter(entrada);
                 curarPersonagem();
 
             }
 
-            default ->{
+            default -> { // Reinicia o combatePersonagemFacil() se digitou um número errado
                 System.out.println("Você não escolheu um número válido");
                 combatePersonagemFacil();
             }
         }
-
     }
 
     /**
@@ -462,25 +631,24 @@ public class Haftafell {
      * facil
      */
     static void combatePersonagemMedio() { //Decisões do turno do personagem
-
-        System.out.println("== Seu turno ==");
+        int escolhaCombatePersonagemMedio; // Inicialização da variavel utilizada
+        System.out.println("== Seu turno =="); // Mostra as opções que o usuário pode fazer no seu turno
         System.out.println(red + "1 - Golpear" + fim);
         System.out.println(green + "2 - Curar" + fim);
-
         System.out.println("===============");
-        int escolha = entrada.nextInt();
-        switch (escolha) {
-            case 1 -> {
+        escolhaCombatePersonagemMedio = entrada.nextInt(); // Armazena o valor na variável
+        switch (escolhaCombatePersonagemMedio) { // Verifica as ações que serão tomadas
+            case 1 -> { // Personagem vai golpear, chamar a função ataquePersonagemFacil(), com o parametro danoPersonagem()
                 System.out.println(red + "Voce escolheu golpear" + fim);
                 ataquePersonagemMedio(danoPersonagem());
             }
-            case 2 -> {
+            case 2 -> { // Personagem vai curar, vai chamar a função curarPersonagem()
                 System.out.println(green + "Voce escolheu curar" + fim);
                 curarPersonagem();
 
             }
 
-            default ->{
+            default -> { // Reinicia o combatePersonagemFacil() se digitou um número errado
                 System.out.println("Você não escolheu um número válido");
                 combatePersonagemMedio();
             }
@@ -493,25 +661,24 @@ public class Haftafell {
      * facil
      */
     static void combatePersonagemDificil() { //Decisões do turno do personagem
-
-        System.out.println("== Seu turno ==");
+        int escolhaCombatePersonagemDificil; // Inicialização da variavel utilizada
+        System.out.println("== Seu turno =="); // Mostra as opções que o usuário pode fazer no seu turno
         System.out.println(red + "1 - Golpear" + fim);
         System.out.println(green + "2 - Curar" + fim);
-
         System.out.println("===============");
-        int escolha = entrada.nextInt();
-        switch (escolha) {
-            case 1 -> {
+        escolhaCombatePersonagemDificil = entrada.nextInt(); // Armazena o valor na variável
+        switch (escolhaCombatePersonagemDificil) { // Verifica as ações que serão tomadas
+            case 1 -> { // Personagem vai golpear, chamar a função ataquePersonagemFacil(), com o parametro danoPersonagem()
                 System.out.println(red + "Voce escolheu golpear" + fim);
-                ataquePersonagemDificil(danoPersonagem()); // Faz uma pergunta e se for correta da dano no inimigo
+                ataquePersonagemDificil(danoPersonagem()); 
             }
-            case 2 -> {
+            case 2 -> { // Personagem vai curar, vai chamar a função curarPersonagem()
                 System.out.println(green + "Voce escolheu curar" + fim);
-                curarPersonagem(); // Usa uma poção para curar vida do personagem principal, podendo usar apenas 3
+                curarPersonagem();
 
             }
 
-            default ->{
+            default -> { // Reinicia o combatePersonagemFacil() se digitou um número errado
                 System.out.println("Você não escolheu um número válido");
                 combatePersonagemDificil();
             }
@@ -519,41 +686,22 @@ public class Haftafell {
         }
 
     }
+    // Fim das funções de combate do inimigo
 
-    /**
-     * Classe que contém a randomificação do dano do personagem se ele acertar a
-     * pergunta
-     *
-     * @return numero int randomizado
-     */
-    static int danoPersonagem() {
-        int danoPersonagem = Random.nextInt(13, 25); // Número entre 13 e 24
-        return danoPersonagem;
-    }
-
-    /**
-     * Classe que contém a randomificação do dano do inimigo se o personagem
-     * errar a pergunta
-     *
-     * @return numero int randomizado
-     */
-    static int danoInimigo() {
-        int danoInimigo = Random.nextInt(13, 25); // Número entre 13 e 24
-        return danoInimigo;
-    }
-
+    // Inicio das funções de combate do inimigo
     /**
      * Classe que gera o turno do oponente no combate facil, com uma
      * randomização nas ações do inimigo (bot)
      */
     static void combateInimigoFacil() { //Randomificação das decisões do inimigo
-        int decisao = Random.nextInt(5);//Randomificação das decisões do inimigo, escolhe um número de 0 a 4
-        switch (decisao) {//Randomificação das decisões do inimigo
-            case 0, 1, 3 -> {
+        int randomCombateInimigoFacil; // Inicialização da variável
+        randomCombateInimigoFacil = Random.nextInt(5);//Randomificação das decisões do inimigo, escolhe um número de 0 a 4
+        switch (randomCombateInimigoFacil) { //Randomificação das decisões do inimigo
+            case 0, 1, 3 -> { // Inimigo randomizou golpear, vai chamar a função ataqueMiniBossFacil(), com parametro danoInimigo()
                 System.out.println(red + "O inimigo escolheu golpear" + fim);
                 ataqueMiniBossFacil(danoInimigo());
             }
-            case 2, 4 -> {
+            case 2, 4 -> { // Inimigo randomizou curar, vai chamar a função curarInimigo()
                 System.out.println(green + "O inimigo escolheu curar" + fim);
                 curarInimigo();
 
@@ -567,13 +715,14 @@ public class Haftafell {
      * randomização nas ações do inimigo (bot)
      */
     static void combateInimigoMedio() { //Randomificação das decisões do inimigo
-        int decisao = Random.nextInt(5);//Randomificação das decisões do inimigo, escolhe um número de 0 a 4
-        switch (decisao) {//Randomificação das decisões do inimigo
-            case 0, 1, 3 -> {
+        int randomCombateInimigoMedio; // Inicialização da variável
+        randomCombateInimigoMedio = Random.nextInt(5);//Randomificação das decisões do inimigo, escolhe um número de 0 a 4
+        switch (randomCombateInimigoMedio) { //Randomificação das decisões do inimigo
+            case 0, 1, 3 -> { // Inimigo randomizou golpear, vai chamar a função ataqueMiniBossFacil(), com parametro danoInimigo()
                 System.out.println(red + "O inimigo escolheu golpear" + fim);
                 ataqueMiniBossMedio(danoInimigo());
             }
-            case 2, 4 -> {
+            case 2, 4 -> { // Inimigo randomizou curar, vai chamar a função curarInimigo()
                 System.out.println(green + "O inimigo escolheu curar" + fim);
                 curarInimigo();
 
@@ -587,13 +736,14 @@ public class Haftafell {
      * randomização nas ações do inimigo (bot)
      */
     static void combateInimigoDificil() { //Randomificação das decisões do inimigo
-        int decisao = Random.nextInt(5);//Randomificação das decisões do inimigo, escolhe um número de 0 a 4
-        switch (decisao) {//Randomificação das decisões do inimigo
-            case 0, 1, 3 -> {
+        int randomCombateInimigoDificil; // Inicialização da variável
+        randomCombateInimigoDificil = Random.nextInt(5); //Randomificação das decisões do inimigo, escolhe um número de 0 a 4
+        switch (randomCombateInimigoDificil) { //Randomificação das decisões do inimigo
+            case 0, 1, 3 -> { // Inimigo randomizou golpear, vai chamar a função ataqueMiniBossFacil(), com parametro danoInimigo()
                 System.out.println(red + "O inimigo escolheu golpear" + fim);
                 ataqueMiniBossDificil(danoInimigo());
             }
-            case 2, 4 -> {
+            case 2, 4 -> { // Inimigo randomizou curar, vai chamar a função curarInimigo()
                 System.out.println(green + "O inimigo escolheu curar" + fim);
                 curarInimigo();
 
@@ -601,91 +751,21 @@ public class Haftafell {
 
         }
     }
+    // Fim das funções de combate do inimigo
 
-    /**
-     * Classe que mostra os cápitulos da historia para selecionar no menu
-     * inicial
-     */
-    static void escolhaCapitulo() { //Tela ao selecionar a opção capitulos do menu.
-        /**
-         * Classe que mostra os cápitulos da historia para selecionar
-         */
-        System.out.println("1 - Cápitulo 1");
-        System.out.println("2 - Cápitulo 2");
-        System.out.println("3 - Voltar ao menu inicial");
-        
-
-        int escolha = entrada.nextInt();
-
-        switch (escolha) { // Escolha dos capitulos
-            case 1 -> {
-                System.out.println("Você está entrando no primeiro capitulo do jogo, chamado de Prólogo, boa sorte!");
-                historiaCapitulo1();
-            }
-            case 2 -> {
-                System.out.println("Você está entrando no segundo capitulo do jogo, chamado de A Jornada Inicial, boa sorte!");
-                historiaCapitulo2();
-            }
-            case 3 -> {
-                 System.out.println("Voltando para o menu inicial");
-                menu();
-            }
-            default -> {
-                System.out.println("Digite um número válido");
-                escolhaCapitulo();
-            }
-            
-        }
-        // Escolha dos capitulos
-    }
-
-    /**
-     * Classe que mostra os combates para selecionar no menu inicial
-     */
-    static void escolhaCombate() { //Tela ao selecionar a opção capitulos do menu.
-        /**
-         * Classe que mostra os cápitulos da historia para selecionar
-         */
-        System.out.println("1 - Combate Facil");
-        System.out.println("2 - Combate Medio");
-        System.out.println("3 - Combate Dificil");
-        System.out.println("4 - Voltar ao menu inicial");
-
-        int escolha = entrada.nextInt();
-
-        switch (escolha) { // Escolha dos capitulos
-            case 1 -> {
-                System.out.println("Você está entrando em combate facil, boa sorte!");
-                combateFacil();
-            }
-            case 2 -> {
-                System.out.println("Você está entrando em combate medio, boa sorte!");
-                combateMedio();
-            }
-            case 3 -> {
-                System.out.println("Você está entrando em combate dificil, boa sorte!");
-                combateDificil();
-            }
-            case 4 -> {
-                System.out.println("Voltando para o menu inicial");
-                menu();
-            }
-            default-> {
-                System.out.println("Digite uma opção válida!");
-         escolhaCombate();       
-            }
-        }
-        // Escolha dos capitulos
-    }
-
+    // Inicio das funções de ataque do personagem
     /**
      * Classe que roda após o usuário escolher a opção Golpear no combate facil.
      * Ela gera uma pergunta que o aliado deve responder corretamente para dar
      * um dano aleatorio maior que 13 e menor que 24. int a = numero random
      */
-    static void ataquePersonagemFacil(int a) {
-
-        ArrayList<String> perguntas = new ArrayList<>(); // Array de perguntas do inimigo / personagem
+    static void ataquePersonagemFacil(int danoPersonagem) {
+        Random pergunta = new Random(); // Inicialização do Random
+        String resposta;
+        int numeroDaPergunta;
+        char respostaArray;
+        int tamanhoArray;
+        ArrayList<String> perguntas = new ArrayList<>(); // Array de perguntas adicionadas para utilizar no combateFacil()
         perguntas.add("35 estudantes estrangeiros vieram ao Brasil. 16 visitaram Manaus; 16, S. Paulo e 11, Salvador. \nDesses estudantes, 5 visitaram Manaus e Salvador e, desses 5, 3 visitaram também São Paulo. \nO número de estudantes que visitaram Manaus ou São Paulo foi:\n"
                 + "\n"
                 + "A) 29.\n"
@@ -804,10 +884,10 @@ public class Haftafell {
                 + "D) 5\n"
                 + "\n"
                 + "E) 6");
-        int n = perguntas.size();
-        Random pergunta = new Random();
-        int numPergunta = pergunta.nextInt(n);
-        ArrayList<Character> respostas = new ArrayList<>(); // Array das respostas das perguntas do inimigo / personagem
+        tamanhoArray = perguntas.size(); // Descobrir qual o tamanho do array para utilizar ele como parametro no random
+        
+        numeroDaPergunta = pergunta.nextInt(tamanhoArray); // Número aleátorio para que possa pegar uma pergunta aleatória
+        ArrayList<Character> respostas = new ArrayList<>(); // Array das respostas das perguntas para ser utilizado no combateFacil()
         respostas.add('a');
         respostas.add('e');
         respostas.add('c');
@@ -819,25 +899,25 @@ public class Haftafell {
         respostas.add('a');
         respostas.add('e');
 
-        System.out.println(perguntas.get(numPergunta));
+        System.out.println(perguntas.get(numeroDaPergunta)); // Mostra a pergunta pro usuário
         System.out.println("Digite a resposta correta! ");
-        String resposta = entrada.next();
-        resposta = resposta.toLowerCase();
-        char respostaArray = resposta.charAt(0);
+        resposta = entrada.next(); // Armazena a resposta
+        resposta = resposta.toLowerCase(); // Transforma em letras minusculas
+        respostaArray = resposta.charAt(0); // Pega a primeira letra da resposta
 
-        if (respostas.get(numPergunta) == respostaArray) {
+        if (respostas.get(numeroDaPergunta) == respostaArray) { // Verifica se a sua resposta corresponde com a resposta pra essa pergunta no array respostaArray
             System.out.println("Resposta correta, você atacou o golem");
-            System.out.format("O dano total foi de%s%n%d%s%n\n", red, a, fim);
-            vidaCriatura -= a;
-            if (vidaCriatura <= 0) {
+            System.out.format("O dano total foi de%s%n%d%s%n\n", red, danoPersonagem, fim); // Mostra qual foi o dano
+            vidaCriatura -= danoPersonagem; // Tira a vida o inimigo
+            if (vidaCriatura <= 0) { // Verifica se o inimigo está com vida abaixo de 0
                 vidaCriatura = 0;
-            } else {
+            } else { // Senão, mostra a vida atual do inimigo
                 System.out.format("A vida do golem está em %s%n%d%s%n\n", red, vidaCriatura, fim);
             }
-        } else {
-            System.out.println("Resposta Incorreta, a resposta correta é " + respostas.get(numPergunta) + " você errou o ataque no golem");
+        } else { // Se errou ele mostra a resposta correta e você não acerta o dano
+            System.out.println("Resposta Incorreta, a resposta correta é " + respostas.get(numeroDaPergunta) + " você errou o ataque no golem");
         }
-       
+
     }
 
     /**
@@ -845,9 +925,13 @@ public class Haftafell {
      * Ela gera uma pergunta que o aliado deve responder corretamente para dar
      * um dano aleatorio maior que 13 e menor que 24. int a = numero random
      */
-    static void ataquePersonagemMedio(int a) {
-
-        ArrayList<String> perguntas = new ArrayList<>(); // Array de perguntas do inimigo / personagem
+    static void ataquePersonagemMedio(int danoPersonagem) {
+        Random pergunta = new Random(); // Inicialização do Random
+        String resposta;
+        int numeroDaPergunta;
+        char respostaArray;
+        int tamanhoArray;
+        ArrayList<String> perguntas = new ArrayList<>(); // Array de perguntas adicionadas para utilizar no combateMedio()
         perguntas.add("O valor de x que faz a equação 2^(x+1)=32\n(Dica: Tente colocar os números na mesma base em ambos os lados) "
                 + "  é:\n"
                 + "\n"
@@ -979,9 +1063,9 @@ public class Haftafell {
                 + "D) 8 semanas\n"
                 + "\n"
                 + "E) 9 semanas");
-        int n = perguntas.size();
-        Random pergunta = new Random();
-        int numPergunta = pergunta.nextInt(n);
+        tamanhoArray = perguntas.size(); // Descobrir qual o tamanho do array para utilizar ele como parametro no random
+       
+        numeroDaPergunta = pergunta.nextInt(tamanhoArray); // Número aleátorio para que possa pegar uma pergunta aleatória
         ArrayList<Character> respostas = new ArrayList<>(); // Array das respostas das perguntas do inimigo / personagem
         respostas.add('c');
         respostas.add('d');
@@ -994,23 +1078,23 @@ public class Haftafell {
         respostas.add('c');
         respostas.add('c');
 
-        System.out.println(perguntas.get(numPergunta));
+        System.out.println(perguntas.get(numeroDaPergunta)); // Mostra a pergunta pro usuário
         System.out.println("Digite a resposta correta! ");
-        String resposta = entrada.next();
-        resposta = resposta.toLowerCase();
-        char respostaArray = resposta.charAt(0);
+        resposta = entrada.next(); // Armazena a resposta
+        resposta = resposta.toLowerCase(); // Transforma em letras minusculas
+        respostaArray = resposta.charAt(0); // Pega a primeira letra da resposta
 
-        if (respostas.get(numPergunta) == respostaArray) {
+        if (respostas.get(numeroDaPergunta) == respostaArray) { // Verifica se a sua resposta corresponde com a resposta pra essa pergunta no array respostaArray
             System.out.println("Resposta correta, você atacou o Land");
-            System.out.format("O dano total foi de %s%n%d%s%n\n", red, a, fim);
-            vidaCriatura -= a;
-            if (vidaCriatura <= 0) {
+            System.out.format("O dano total foi de%s%n%d%s%n\n", red, danoPersonagem, fim); // Mostra qual foi o dano
+            vidaCriatura -= danoPersonagem; // Tira a vida o inimigo
+            if (vidaCriatura <= 0) { // Verifica se o inimigo está com vida abaixo de 0
                 vidaCriatura = 0;
-            } else {
-                System.out.format("A vida do Land está em  %s%n%d %s%n\n", red, vidaCriatura, fim);
+            } else { // Senão, mostra a vida atual do inimigo
+                System.out.format("A vida do golem está em %s%n%d%s%n\n", red, vidaCriatura, fim);
             }
-        } else {
-            System.out.println("Resposta Incorreta, a resposta correta é " + respostas.get(numPergunta) + " você errou o ataque no Land");
+        } else { // Se errou ele mostra a resposta correta e você não acerta o dano
+            System.out.println("Resposta Incorreta, a resposta correta é " + respostas.get(numeroDaPergunta) + " você errou o ataque no golem");
         }
     }
 
@@ -1020,9 +1104,13 @@ public class Haftafell {
      * para dar um dano aleatorio maior que 13 e menor que 24. int a = numero
      * random
      */
-    static void ataquePersonagemDificil(int a) {
-
-        ArrayList<String> perguntas = new ArrayList<>(); // Array de perguntas do inimigo / personagem
+    static void ataquePersonagemDificil(int danoPersonagem) {
+        Random pergunta = new Random(); // Inicialização do Random
+        String resposta;
+        int numeroDaPergunta;
+        char respostaArray;
+        int tamanhoArray;
+        ArrayList<String> perguntas = new ArrayList<>(); // Array de perguntas do personagem usado no combateDificil()
         perguntas.add("As raízes da equação 2x2 + bx + c = 0 são 3 e − 4. Nesse caso, o valor de b - c é\n(Dica: Substitua a equação com os dois valores e faça um sistema de subtração entre elas)"
                 + "a) −26.\n"
                 + "b) −22.\n"
@@ -1128,9 +1216,8 @@ public class Haftafell {
                 + "d) – 7\n"
                 + "\n"
                 + "e) – 5");
-        int n = perguntas.size();
-        Random pergunta = new Random();
-        int numPergunta = pergunta.nextInt(n);
+        tamanhoArray= perguntas.size();
+        numeroDaPergunta = pergunta.nextInt(tamanhoArray);
         ArrayList<Character> respostas = new ArrayList<>(); // Array das respostas das perguntas do inimigo / personagem
         respostas.add('e');
         respostas.add('d');
@@ -1143,35 +1230,41 @@ public class Haftafell {
         respostas.add('a');
         respostas.add('e');
 
-        System.out.println(perguntas.get(numPergunta));
+        System.out.println(perguntas.get(numeroDaPergunta)); // Mostra a pergunta pro usuário
         System.out.println("Digite a resposta correta! ");
-        String resposta = entrada.next();
-        resposta = resposta.toLowerCase();
-        char respostaArray = resposta.charAt(0);
+        resposta = entrada.next(); // Armazena a resposta
+        resposta = resposta.toLowerCase(); // Transforma em letras minusculas
+        respostaArray = resposta.charAt(0); // Pega a primeira letra da resposta
 
-        if (respostas.get(numPergunta) == respostaArray) {
+        if (respostas.get(numeroDaPergunta) == respostaArray) { // Verifica se a sua resposta corresponde com a resposta pra essa pergunta no array respostaArray
             System.out.println("Resposta correta, você atacou o feiticeiro");
-            System.out.format("O dano total foi de %s%n%d%s%n\n", red, a, fim);
-            vidaCriatura -= a;
-            if (vidaCriatura <= 0) {
+            System.out.format("O dano total foi de%s%n%d%s%n\n", red, danoPersonagem, fim); // Mostra qual foi o dano
+            vidaCriatura -= danoPersonagem; // Tira a vida o inimigo
+            if (vidaCriatura <= 0) { // Verifica se o inimigo está com vida abaixo de 0
                 vidaCriatura = 0;
-            } else {
-                System.out.format("A vida do feiticeiro está em  %s%n%d %s%n\n", red, vidaCriatura, fim);
+            } else { // Senão, mostra a vida atual do inimigo
+                System.out.format("A vida do golem está em %s%n%d%s%n\n", red, vidaCriatura, fim);
             }
-        } else {
-            System.out.println("Resposta Incorreta, a resposta correta é " + respostas.get(numPergunta) + " você errou o ataque no feiticeiro");
+        } else { // Se errou ele mostra a resposta correta e você não acerta o dano
+            System.out.println("Resposta Incorreta, a resposta correta é " + respostas.get(numeroDaPergunta) + " você errou o ataque no golem");
         }
     }
+    // Fim das funções de ataque do personagem
 
+    // Inicio das funções de ataque do inimigo
     /**
      * Classe que roda se o bot randomizar a opção Golpear no combate facil, ela
      * gera uma pergunta para o usuário que deve responde-la corretamente para
      * que ele desvie do ataque, se errar a pergunta, ele toma o dano inteiro.
      * int a = numero random
      */
-    static void ataqueMiniBossFacil(int a) { //Execucao da ação do inimigo Golpear
-
-        ArrayList<String> perguntas = new ArrayList<>(); // Array de perguntas do inimigo / personagem
+    static void ataqueMiniBossFacil(int danoInimigo) { //Execucao da ação do inimigo Golpear
+        Random pergunta = new Random(); // Inicialização do Random
+        String resposta;
+        int numeroDaPergunta;
+        char respostaArray;
+        int tamanhoArray;
+        ArrayList<String> perguntas = new ArrayList<>(); // Array de perguntas do inimigo usado no combateFacil()
         perguntas.add("35 estudantes estrangeiros vieram ao Brasil. 16 visitaram Manaus; 16, S. Paulo e 11, Salvador. \nDesses estudantes, 5 visitaram Manaus e Salvador e, desses 5, 3 visitaram também São Paulo. \nO número de estudantes que visitaram Manaus ou São Paulo foi:\n"
                 + "\n"
                 + "A) 29.\n"
@@ -1290,9 +1383,8 @@ public class Haftafell {
                 + "D) 5\n"
                 + "\n"
                 + "E) 6");
-        int n = perguntas.size();
-        Random pergunta = new Random(); //Randomificação das perguntas que o inimigo pode executar ao ser randomificado a opção ataque
-        int numPergunta = pergunta.nextInt(n);
+        tamanhoArray = perguntas.size();
+        numeroDaPergunta = pergunta.nextInt(tamanhoArray);
 
         // A randomificação do array sairá aqui e será escolhido a pergunta
         ArrayList<Character> respostas = new ArrayList<>(); // Array das respostas das perguntas do inimigo / personagem
@@ -1307,16 +1399,16 @@ public class Haftafell {
         respostas.add('a');
         respostas.add('e');
 
-        System.out.println(perguntas.get(numPergunta));
+        System.out.println(perguntas.get(numeroDaPergunta)); // Mostra a pergunta pro usuário
         System.out.println("Digite a resposta correta! ");
-        String resposta = entrada.next();
+        resposta = entrada.next(); // Armazena a resposta
         resposta = resposta.toLowerCase();
-        char respostaArray = resposta.charAt(0);
-        if (respostas.get(numPergunta) == respostaArray) {
+        respostaArray = resposta.charAt(0);
+        if (respostas.get(numeroDaPergunta) == respostaArray) { // Verifica se a resposta corresponde a resposta do array de perguntas
             System.out.println("Resposta correta, você desviou do golpe do inimigo");
         } else {
-            System.out.println("Resposta Incorreta, a resposta correta é " + respostas.get(numPergunta) + " você tomou o dano inteiro do inimigo");
-            vidaPersonagem = vidaPersonagem - a;
+            System.out.println("Resposta Incorreta, a resposta correta é " + respostas.get(numeroDaPergunta) + " você tomou o dano inteiro do inimigo"); // Mostra a resposta certa
+            vidaPersonagem -= danoInimigo; // Tira vida do personagem
             System.out.format("Sua vida atual é  %s%n%d %s%n\n", green, vidaPersonagem, fim);
         }
     }
@@ -1327,9 +1419,13 @@ public class Haftafell {
      * que ele desvie do ataque, se errar a pergunta, ele toma o dano inteiro.
      * int a = numero random
      */
-    static void ataqueMiniBossMedio(int a) {
-
-        ArrayList<String> perguntas = new ArrayList<>(); // Array de perguntas do inimigo / personagem
+    static void ataqueMiniBossMedio(int danoInimigo) {
+        Random pergunta = new Random(); // Inicialização do Random
+        String resposta;
+        int numeroDaPergunta;
+        char respostaArray;
+        int tamanhoArray;
+        ArrayList<String> perguntas = new ArrayList<>(); // Array de perguntas do inimigo no combateMedio()
         perguntas.add("O valor de x que faz a equação 2^(x+1)=32\n(Dica: Tente colocar os números na mesma base em ambos os lados) "
                 + "  é:\n"
                 + "\n"
@@ -1461,9 +1557,8 @@ public class Haftafell {
                 + "D) 8 semanas\n"
                 + "\n"
                 + "E) 9 semanas");
-        int n = perguntas.size();
-        Random pergunta = new Random();
-        int numPergunta = pergunta.nextInt(n);
+        tamanhoArray = perguntas.size();
+        numeroDaPergunta = pergunta.nextInt(tamanhoArray);
         ArrayList<Character> respostas = new ArrayList<>(); // Array das respostas das perguntas do inimigo / personagem
         respostas.add('c');
         respostas.add('d');
@@ -1476,18 +1571,17 @@ public class Haftafell {
         respostas.add('c');
         respostas.add('c');
 
-        System.out.println(perguntas.get(numPergunta));
+        System.out.println(perguntas.get(numeroDaPergunta)); // Mostra a pergunta pro usuário
         System.out.println("Digite a resposta correta! ");
-        String resposta = entrada.next();
+        resposta = entrada.next(); // Armazena a resposta
         resposta = resposta.toLowerCase();
-        char respostaArray = resposta.charAt(0);
-
-        if (respostas.get(numPergunta) == respostaArray) {
+        respostaArray = resposta.charAt(0);
+        if (respostas.get(numeroDaPergunta) == respostaArray) { // Verifica se a resposta corresponde a resposta do array de perguntas
             System.out.println("Resposta correta, você desviou do golpe do inimigo");
         } else {
-            System.out.println("Resposta Incorreta, a resposta correta é " + respostas.get(numPergunta) + " você tomou o dano inteiro do inimigo");
-            vidaPersonagem = vidaPersonagem - a;
-            System.out.format("Sua vida atual é  %s%n%d%s%n\n", green, vidaPersonagem, fim);
+            System.out.println("Resposta Incorreta, a resposta correta é " + respostas.get(numeroDaPergunta) + " você tomou o dano inteiro do inimigo"); // Mostra a resposta certa
+            vidaPersonagem -= danoInimigo; // Tira vida do personagem
+            System.out.format("Sua vida atual é  %s%n%d %s%n\n", green, vidaPersonagem, fim);
         }
     }
 
@@ -1497,9 +1591,13 @@ public class Haftafell {
      * para que ele desvie do ataque, se errar a pergunta, ele toma o dano
      * inteiro. int a = numero random
      */
-    static void ataqueMiniBossDificil(int a) {
-
-        ArrayList<String> perguntas = new ArrayList<>(); // Array de perguntas do inimigo / personagem
+    static void ataqueMiniBossDificil(int danoInimigo) {
+        Random pergunta = new Random(); // Inicialização do Random
+        String resposta;
+        int numeroDaPergunta;
+        char respostaArray;
+        int tamanhoArray;
+        ArrayList<String> perguntas = new ArrayList<>(); // Array de perguntas do inimigo usado no combateDificil()
         perguntas.add("As raízes da equação 2x2 + bx + c = 0 são 3 e − 4. Nesse caso, o valor de b - c é\n(Dica: Substitua a equação com os dois valores e faça um sistema de subtração entre elas)"
                 + "a) −26.\n"
                 + "b) −22.\n"
@@ -1605,9 +1703,8 @@ public class Haftafell {
                 + "d) – 7\n"
                 + "\n"
                 + "e) – 5");
-        int n = perguntas.size();
-        Random pergunta = new Random();
-        int numPergunta = pergunta.nextInt(n);
+        tamanhoArray = perguntas.size();
+        numeroDaPergunta = pergunta.nextInt(tamanhoArray);
         ArrayList<Character> respostas = new ArrayList<>(); // Array das respostas das perguntas do inimigo / personagem
         respostas.add('e');
         respostas.add('d');
@@ -1620,88 +1717,53 @@ public class Haftafell {
         respostas.add('a');
         respostas.add('e');
 
-        System.out.println(perguntas.get(numPergunta));
+        System.out.println(perguntas.get(numeroDaPergunta)); // Mostra a pergunta pro usuário
         System.out.println("Digite a resposta correta! ");
-        String resposta = entrada.next();
+        resposta = entrada.next(); // Armazena a resposta
         resposta = resposta.toLowerCase();
-        char respostaArray = resposta.charAt(0);
-
-        if (respostas.get(numPergunta) == respostaArray) {
+        respostaArray = resposta.charAt(0);
+        if (respostas.get(numeroDaPergunta) == respostaArray) { // Verifica se a resposta corresponde a resposta do array de perguntas
             System.out.println("Resposta correta, você desviou do golpe do inimigo");
         } else {
-            System.out.println("Resposta Incorreta, a resposta correta é " + respostas.get(numPergunta) + " você tomou o dano inteiro do inimigo");
-            vidaPersonagem = vidaPersonagem - a;
-            System.out.format("Sua vida atual é  %s%n%d%s%n\n", green, vidaPersonagem, fim);
+            System.out.println("Resposta Incorreta, a resposta correta é " + respostas.get(numeroDaPergunta) + " você tomou o dano inteiro do inimigo"); // Mostra a resposta certa
+            vidaPersonagem -= danoInimigo; // Tira vida do personagem
+            System.out.format("Sua vida atual é  %s%n%d %s%n\n", green, vidaPersonagem, fim);
         }
     }
+    // Fim das funções de ataque do inimigo
 
-    /**
-     * Classe que gera o menu inicial do jogo!
-     */
-    static void menu() { // Comando que executa o menu do Jogo, primeira coisa que irá aparecer ao jogador
-        int escolha;
-        do {
-            System.out.println(" === Menu === ");
-            System.out.println("1 - Iniciar");
-            System.out.println("2 - Cápitulos");
-            System.out.println("3 - Créditos");
-            System.out.println("4 - Combate");
-            System.out.println(" ============ ");
-            escolha = entrada.nextInt();
-
-            switch (escolha) {
-                case 1 -> {
-                    historiaCapitulo1();
-                    historiaCapitulo2();
-                }
-                case 2 ->
-                    escolhaCapitulo();
-                case 3 -> {
-                    System.out.println("Criadores: ");
-                    System.out.println("Caique, Cleiton, Henrique, Juan e Maicon"); // Créditos
-                    menu();
-                }
-                case 4 ->
-                    escolhaCombate(); // Sair do jogo
-                default ->{
-                    System.out.println("Digite um número válido");
-                    menu();
-                }
-            }
-        } while (escolha > 0 && escolha >= 5);
-    }
-
+    // Inicio das funções de combate
     /**
      * Classe que gera o combate facil, ou seja, fica intercalando entre o turno
      * do oponente e o do personagem principal, sempre verificando se algum dos
      * dois morreu, ou seja, vida menor ou igual a 0.
      */
-    static void combateFacil() {
-        vidaCriatura = 50;
-        vidaPersonagem = 50;
-        System.out.println("    ______                         __    __               ______      __             \n" +
-"   / ____/_____      ______ ______/ /_  / /____  _____   / ____/___  / /__  ____ ___ \n" +
-"  / __/ / ___/ | /| / / __ `/ ___/ __ \\/ __/ _ \\/ ___/  / / __/ __ \\/ / _ \\/ __ `__ \\\n" +
-" / /___/ /   | |/ |/ / /_/ / /__/ / / / /_/  __/ /     / /_/ / /_/ / /  __/ / / / / /\n" +
-"/_____/_/    |__/|__/\\__,_/\\___/_/ /_/\\__/\\___/_/      \\____/\\____/_/\\___/_/ /_/ /_/ \n" +
-"                                                                                     ");
-        System.out.println("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
-"⠀⠀⠀⠀⠀⠀⠀⣠⣾⣷⡄⢠⣾⣿⣿⣿⣿⣷⡄⢀⣾⣷⣄⠀⠀⠀⠀⠀⠀⠀\n" +
-"⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⡇⢀⣤⣤⡄⢠⣤⣤⡀⢸⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀\n" +
-"⠀⠀⠀⠀⠀⠉⠻⢿⣿⣿⣿⡀⠻⢿⡇⢸⡿⠟⢀⣿⣿⣿⣿⠟⠋⠀⠀⠀⠀⠀\n" +
-"⠀⠀⠀⠀⠀⣠⡦⠀⠉⠉⠉⣠⣶⣤⣤⣤⣤⣶⣄⠉⠉⠉⠀⢴⣤⡀⠀⠀⠀⠀\n" +
-"⠀⠀⠀⣠⣄⠉⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⡿⠟⠀⠀⠀⠀⠀⠉⣀⣀⡀⠀⠀\n" +
-"⠀⠀⣾⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣠⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⣷⠀⠀\n" +
-"⠀⢰⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⡇⠀\n" +
-"⠀⣸⣿⣿⣿⣿⡇⠀⠀⢀⣴⠟⠃⠀⠉⠉⠀⠘⠻⣦⡀⠀⠀⢰⣿⣿⣿⣿⣷⠀\n" +
-"⠀⠉⢉⣉⣉⡉⠁⢀⣀⠘⠃⠀⠀⠀⠀⠀⠀⠀⠀⠘⠃⣀⡀⠈⠉⣉⣉⡉⠉⠀\n" +
-"⠀⠀⠘⠿⠟⠁⣴⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣦⠈⠻⠿⠃⠀⠀\n" +
-"⠀⠀⠀⠀⠀⢰⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀\n" +
-"⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀\n" +
-"⠀⠀⠀⠀⠀⣠⣶⣦⡌⠻⣿⠀⠀⠀⠀⠀⠀⠀⠀⣿⠟⢁⣴⣶⣤⡀⠀⠀⠀⠀\n" +
-"⠀⠀⠀⠀⠘⠛⠛⠛⠋⠀⠙⠁⠀⠀⠀⠀⠀⠀⠀⠛⠀⠙⠛⠛⠛⠃⠀⠀⠀⠀");
+    static void combateFacil() { // Roda o loop do turno do combatePersonagemFacil() e combateInimigoFacil() até que a vida de algum dos dois chegue a 0
+        vidaCriatura = 50; // Reinicia a vida perdida do combate anterior
+        vidaPersonagem = 50; // Reinicia a vida perdida do combate anterior
+        System.out.println("    ______                         __    __               ______      __             \n"
+                + "   / ____/_____      ______ ______/ /_  / /____  _____   / ____/___  / /__  ____ ___ \n"
+                + "  / __/ / ___/ | /| / / __ `/ ___/ __ \\/ __/ _ \\/ ___/  / / __/ __ \\/ / _ \\/ __ `__ \\\n"
+                + " / /___/ /   | |/ |/ / /_/ / /__/ / / / /_/  __/ /     / /_/ / /_/ / /  __/ / / / / /\n"
+                + "/_____/_/    |__/|__/\\__,_/\\___/_/ /_/\\__/\\___/_/      \\____/\\____/_/\\___/_/ /_/ /_/ \n"
+                + "                                                                                     ");
+        System.out.println("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
+                + "⠀⠀⠀⠀⠀⠀⠀⣠⣾⣷⡄⢠⣾⣿⣿⣿⣿⣷⡄⢀⣾⣷⣄⠀⠀⠀⠀⠀⠀⠀\n"
+                + "⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⡇⢀⣤⣤⡄⢠⣤⣤⡀⢸⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀\n"
+                + "⠀⠀⠀⠀⠀⠉⠻⢿⣿⣿⣿⡀⠻⢿⡇⢸⡿⠟⢀⣿⣿⣿⣿⠟⠋⠀⠀⠀⠀⠀\n"
+                + "⠀⠀⠀⠀⠀⣠⡦⠀⠉⠉⠉⣠⣶⣤⣤⣤⣤⣶⣄⠉⠉⠉⠀⢴⣤⡀⠀⠀⠀⠀\n"
+                + "⠀⠀⠀⣠⣄⠉⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⡿⠟⠀⠀⠀⠀⠀⠉⣀⣀⡀⠀⠀\n"
+                + "⠀⠀⣾⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣠⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⣷⠀⠀\n"
+                + "⠀⢰⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⡇⠀\n"
+                + "⠀⣸⣿⣿⣿⣿⡇⠀⠀⢀⣴⠟⠃⠀⠉⠉⠀⠘⠻⣦⡀⠀⠀⢰⣿⣿⣿⣿⣷⠀\n"
+                + "⠀⠉⢉⣉⣉⡉⠁⢀⣀⠘⠃⠀⠀⠀⠀⠀⠀⠀⠀⠘⠃⣀⡀⠈⠉⣉⣉⡉⠉⠀\n"
+                + "⠀⠀⠘⠿⠟⠁⣴⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣦⠈⠻⠿⠃⠀⠀\n"
+                + "⠀⠀⠀⠀⠀⢰⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀\n"
+                + "⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀\n"
+                + "⠀⠀⠀⠀⠀⣠⣶⣦⡌⠻⣿⠀⠀⠀⠀⠀⠀⠀⠀⣿⠟⢁⣴⣶⣤⡀⠀⠀⠀⠀\n"
+                + "⠀⠀⠀⠀⠘⠛⠛⠛⠋⠀⠙⠁⠀⠀⠀⠀⠀⠀⠀⠛⠀⠙⠛⠛⠛⠃⠀⠀⠀⠀");
 
-        while ((vidaCriatura > 0 || vidaPersonagem > 0)) {
+        while ((vidaCriatura > 0 || vidaPersonagem > 0)) { // Roda infinitamente até que um dos dois (inimigo ou jogador) tome um dano fatal ou seja, suas vidas chegarem a 0
             combatePersonagemFacil();
             if (vidaCriatura <= 0 || vidaPersonagem <= 0) {
                 break;
@@ -1709,9 +1771,9 @@ public class Haftafell {
             combateInimigoFacil();
         }
 
-        if (vidaPersonagem <= 0) {
+        if (vidaPersonagem <= 0) { // Se o jogador morrer, aparece essa mensagem
             System.out.println("Você morreu pro golem, você não parece ser o escolhido");
-        } else if (vidaCriatura <= 0) {
+        } else if (vidaCriatura <= 0) { // Se o inimigo morrer, aparece essa mensagem
             System.out.println("Boa, você derrotou o golem");
         }
     }
@@ -1721,49 +1783,49 @@ public class Haftafell {
      * do oponente e o do personagem principal, sempre verificando se algum dos
      * dois morreu, ou seja, vida menor ou igual a 0.
      */
-    static void combateMedio() {
-        vidaCriatura = 50;
-        vidaPersonagem = 50;
-        System.out.println("    __                    __                              _      _ __      \n" +
-"   / /   ____ _____  ____/ /    ____     ___  _________  (_)____(_) /_____ \n" +
-"  / /   / __ `/ __ \\/ __  /    / __ \\   / _ \\/ ___/ __ \\/ / ___/ / __/ __ \\\n" +
-" / /___/ /_/ / / / / /_/ /    / /_/ /  /  __(__  ) /_/ / / /  / / /_/ /_/ /\n" +
-"/_____/\\__,_/_/ /_/\\__,_( )   \\____/   \\___/____/ .___/_/_/  /_/\\__/\\____/ \n" +
-"                        |/                     /_/                         ");
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&&&&&&&/&&&&&&,&@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@@@@@@@@&&&&&&& %&%%%%%%%%#&&&&/&&&&&@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@@@@&&&&&&%%%##*####(##.((#(%#*.((%&&&%/#&@%@@@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@&&&%/%(%%/  (/,//*.. ,*//*. .. /## #%%&(&&&@@@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@&@@%%&& %%.##/,,, ,. .          ., .*/(((###%%#&&&@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@&&&&(/,#((/*.,                      .   /((##%% &&&@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@&&&#%%.#*/* .                             ,,,(.#%%.%&&&@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@&&#&%.#, ,*.                                 .*.(##%%%,&&@@@@@@@@@@@\n" +
-"@@@@@@@@@@@&(&&% #(/*.                                    .,***.%%&.&&%@@@@@@@@@\n" +
-"@@@@@@@@@@#&&&%%.(/.,                                       .*/( %#%&&&@@@@@@@@@\n" +
-"@@@@@@@@@@,&&%%,(* ,                                        ../( #%%&&&@@@@@@@@@\n" +
-"@@@@@@@@@@&&&,..(  .                                         ,./*/%%&#&@@@@@@@@@\n" +
-"@@@@@@@@@&&&,%%#(*.                                          .*./( %&&&&@@@@@@@@\n" +
-"@@@@@@@@@&&%&*%#(* .                                         ..*(#%%&&&@@@@@@@@@\n" +
-"@@@@@@@@@@&&#%%,#(*                                           / /#%%&&&@@@@@@@@@\n" +
-"@@@@@@@@@@&&&&%.#(/*                                        . /(,/%&&&&@@@@@@@@@\n" +
-"@@@@@@@@@@@@&&&(%.//*,.                                      ,(,.%&&&&@@@@@@@@@@\n" +
-"@@@@@@@@@@@@&&&%####( ,.                                  ,*(#.%%&&&&@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@&&&/%%%(*/*                               ,.,(.(./%&&&&@&@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@&&&&%%%(/(**  .                     .,*,/.,#*#%%&&&@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@&&&&&%%%###,   . ..           .,.   /,.(#*%%&&&&@@&@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@&&&&&%%%,#(#(,.(/////*,/*,,*((####%%.%&&&&&@@@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@&@@@@@&&&#%&%%% /%%########/##%%%%%,%&&&&&&@@@@@@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@@@@@@@@&&&&&&&&&%.%%%%%%%%%&&&&&&&&&@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&&&&&&&&&%&&&&&&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+    static void combateMedio() { // Roda o loop do turno do combatePersonagemMedio() e combateInimigoMedio() até que a vida de algum dos dois chegue a 0
+        vidaCriatura = 50; // Reinicia a vida perdida do combate anterior
+        vidaPersonagem = 50; // Reinicia a vida perdida do combate anterior
+        System.out.println("    __                    __                              _      _ __      \n"
+                + "   / /   ____ _____  ____/ /    ____     ___  _________  (_)____(_) /_____ \n"
+                + "  / /   / __ `/ __ \\/ __  /    / __ \\   / _ \\/ ___/ __ \\/ / ___/ / __/ __ \\\n"
+                + " / /___/ /_/ / / / / /_/ /    / /_/ /  /  __(__  ) /_/ / / /  / / /_/ /_/ /\n"
+                + "/_____/\\__,_/_/ /_/\\__,_( )   \\____/   \\___/____/ .___/_/_/  /_/\\__/\\____/ \n"
+                + "                        |/                     /_/                         ");
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&&&&&&&/&&&&&&,&@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@@@@@@@@@@@@@@&&&&&&& %&%%%%%%%%#&&&&/&&&&&@@@@@@@@@@@@@@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@@@@@@@@@@&&&&&&%%%##*####(##.((#(%#*.((%&&&%/#&@%@@@@@@@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@@@@@@@&&&%/%(%%/  (/,//*.. ,*//*. .. /## #%%&(&&&@@@@@@@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@@&@@%%&& %%.##/,,, ,. .          ., .*/(((###%%#&&&@@@@@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@@@&&&&(/,#((/*.,                      .   /((##%% &&&@@@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@&&&#%%.#*/* .                             ,,,(.#%%.%&&&@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@&&#&%.#, ,*.                                 .*.(##%%%,&&@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@&(&&% #(/*.                                    .,***.%%&.&&%@@@@@@@@@\n"
+                + "@@@@@@@@@@#&&&%%.(/.,                                       .*/( %#%&&&@@@@@@@@@\n"
+                + "@@@@@@@@@@,&&%%,(* ,                                        ../( #%%&&&@@@@@@@@@\n"
+                + "@@@@@@@@@@&&&,..(  .                                         ,./*/%%&#&@@@@@@@@@\n"
+                + "@@@@@@@@@&&&,%%#(*.                                          .*./( %&&&&@@@@@@@@\n"
+                + "@@@@@@@@@&&%&*%#(* .                                         ..*(#%%&&&@@@@@@@@@\n"
+                + "@@@@@@@@@@&&#%%,#(*                                           / /#%%&&&@@@@@@@@@\n"
+                + "@@@@@@@@@@&&&&%.#(/*                                        . /(,/%&&&&@@@@@@@@@\n"
+                + "@@@@@@@@@@@@&&&(%.//*,.                                      ,(,.%&&&&@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@&&&%####( ,.                                  ,*(#.%%&&&&@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@&&&/%%%(*/*                               ,.,(.(./%&&&&@&@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@@@&&&&%%%(/(**  .                     .,*,/.,#*#%%&&&@@@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@@@@&&&&&%%%###,   . ..           .,.   /,.(#*%%&&&&@@&@@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@@@@@@@&&&&&%%%,#(#(,.(/////*,/*,,*((####%%.%&&&&&@@@@@@@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@@@@&@@@@@&&&#%&%%% /%%########/##%%%%%,%&&&&&&@@@@@@@@@@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@@@@@@@@@@@@@@&&&&&&&&&%.%%%%%%%%%&&&&&&&&&@@@@@@@@@@@@@@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&&&&&&&&&%&&&&&&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"
+                + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
-        while ((vidaCriatura > 0 || vidaPersonagem > 0)) {
+        while ((vidaCriatura > 0 || vidaPersonagem > 0)) { // Roda infinitamente até que um dos dois (inimigo ou jogador) tome um dano fatal ou seja, suas vidas chegarem a 0
             combatePersonagemMedio();
             if (vidaCriatura <= 0 || vidaPersonagem <= 0) {
                 break;
@@ -1771,9 +1833,9 @@ public class Haftafell {
             combateInimigoMedio();
         }
 
-        if (vidaPersonagem <= 0) {
+        if (vidaPersonagem <= 0) { // Se o jogador morrer, aparece essa mensagem
             System.out.println("Você perdeu pro Land, você não provou seu valor");
-        } else if (vidaCriatura <= 0) {
+        } else if (vidaCriatura <= 0) { // Se o inimigo morrer, aparece essa mensagem
             System.out.println("Boa, tu derrotou o Land, você provou seu valor!");
         }
     }
@@ -1783,42 +1845,42 @@ public class Haftafell {
      * turno do oponente e o do personagem principal, sempre verificando se
      * algum dos dois morreu, ou seja, vida menor ou igual a 0.
      */
-    static void combateDificil() {
-        vidaCriatura = 50;
-        vidaPersonagem = 50;
-        System.out.println("    ______     _ __  _           _                   __         ______      __  _     __          __   \n" +
-"   / ____/__  (_) /_(_)_______  (_)________     ____/ /___ _   / ____/___  / /_(_)___/ /___ _____/ /__ \n" +
-"  / /_  / _ \\/ / __/ / ___/ _ \\/ / ___/ __ \\   / __  / __ `/  / __/ / __ \\/ __/ / __  / __ `/ __  / _ \\\n" +
-" / __/ /  __/ / /_/ / /__/  __/ / /  / /_/ /  / /_/ / /_/ /  / /___/ / / / /_/ / /_/ / /_/ / /_/ /  __/\n" +
-"/_/    \\___/_/\\__/_/\\___/\\___/_/_/   \\____/   \\__,_/\\__,_/  /_____/_/ /_/\\__/_/\\__,_/\\__,_/\\__,_/\\___/ \n" +
-"                                                                                                       ");
-        System.out.println("                                        \n" +
-"                 @.%.%                  \n" +
-"                (@@@@&@&                \n" +
-"               ,@@@@@#*,                \n" +
-"               .(@@@@@.,                \n" +
-"             &@@@. @@(*/@&@             \n" +
-"           .@&@& *&&(*%%@&@&@           \n" +
-"  **,     #,.*#/@&&*#&&**/(**      *#*# \n" +
-"     (/#/%/@@@&..& #*****@@@@%&&&& (    \n" +
-"     .. @@@&@&@@@@% .#&&@ (@@@@&&& ,    \n" +
-"     *,&&&&@@, &&%%%##*%.   &@&&&@%     \n" +
-"     .&@&&@/  @&@&@%%* &&&    %&@@@*    \n" +
-"     @&@&&    &&&&@/,,/&&&        @/    \n" +
-"    *@&%     &&&&&&(/,/&&&@        ,    \n" +
-"   *%,       @@&@&%/(**&&&&         #(  \n" +
-"            #&&@&&.//&/&&&&@            \n" +
-"            &@@@@@ /,//&&&&&            \n" +
-"            &@@@@@.#.(*@&@@@            \n" +
-"           &@@@@@@.%*#%@&@@&.           \n" +
-"           @@@@@@@,(,*%@&&&&@           \n" +
-"           @@&@@@@/&*//&&&&@&           \n" +
-"           @&@@@@@@%/&&@&&&&&           \n" +
-"           @@@@@@@@ /.&@&&&&%           \n" +
-"           @@&@@@*//%&**,&&&&           \n" +
-"           /#@%///*%@@*/(,(/#           \n" +
-"               ,@&.#(%%@@(              ");
-        while ((vidaCriatura > 0 || vidaPersonagem > 0)) {
+    static void combateDificil() { // Roda o loop do turno do combatePersonagemDificil() e combateInimigoDificl() até que a vida de algum dos dois chegue a 0
+        vidaCriatura = 50; // Reinicia a vida perdida do combate anterior
+        vidaPersonagem = 50; // Reinicia a vida perdida do combate anterior
+        System.out.println("    ______     _ __  _           _                   __         ______      __  _     __          __   \n"
+                + "   / ____/__  (_) /_(_)_______  (_)________     ____/ /___ _   / ____/___  / /_(_)___/ /___ _____/ /__ \n"
+                + "  / /_  / _ \\/ / __/ / ___/ _ \\/ / ___/ __ \\   / __  / __ `/  / __/ / __ \\/ __/ / __  / __ `/ __  / _ \\\n"
+                + " / __/ /  __/ / /_/ / /__/  __/ / /  / /_/ /  / /_/ / /_/ /  / /___/ / / / /_/ / /_/ / /_/ / /_/ /  __/\n"
+                + "/_/    \\___/_/\\__/_/\\___/\\___/_/_/   \\____/   \\__,_/\\__,_/  /_____/_/ /_/\\__/_/\\__,_/\\__,_/\\__,_/\\___/ \n"
+                + "                                                                                                       ");
+        System.out.println("                                        \n"
+                + "                 @.%.%                  \n"
+                + "                (@@@@&@&                \n"
+                + "               ,@@@@@#*,                \n"
+                + "               .(@@@@@.,                \n"
+                + "             &@@@. @@(*/@&@             \n"
+                + "           .@&@& *&&(*%%@&@&@           \n"
+                + "  **,     #,.*#/@&&*#&&**/(**      *#*# \n"
+                + "     (/#/%/@@@&..& #*****@@@@%&&&& (    \n"
+                + "     .. @@@&@&@@@@% .#&&@ (@@@@&&& ,    \n"
+                + "     *,&&&&@@, &&%%%##*%.   &@&&&@%     \n"
+                + "     .&@&&@/  @&@&@%%* &&&    %&@@@*    \n"
+                + "     @&@&&    &&&&@/,,/&&&        @/    \n"
+                + "    *@&%     &&&&&&(/,/&&&@        ,    \n"
+                + "   *%,       @@&@&%/(**&&&&         #(  \n"
+                + "            #&&@&&.//&/&&&&@            \n"
+                + "            &@@@@@ /,//&&&&&            \n"
+                + "            &@@@@@.#.(*@&@@@            \n"
+                + "           &@@@@@@.%*#%@&@@&.           \n"
+                + "           @@@@@@@,(,*%@&&&&@           \n"
+                + "           @@&@@@@/&*//&&&&@&           \n"
+                + "           @&@@@@@@%/&&@&&&&&           \n"
+                + "           @@@@@@@@ /.&@&&&&%           \n"
+                + "           @@&@@@*//%&**,&&&&           \n"
+                + "           /#@%///*%@@*/(,(/#           \n"
+                + "               ,@&.#(%%@@(              ");
+        while ((vidaCriatura > 0 || vidaPersonagem > 0)) { // Roda infinitamente até que um dos dois (inimigo ou jogador) tome um dano fatal ou seja, suas vidas chegarem a 0
             combatePersonagemDificil();
             if (vidaCriatura <= 0 || vidaPersonagem <= 0) {
                 break;
@@ -1826,27 +1888,29 @@ public class Haftafell {
             combateInimigoDificil();
         }
 
-        if (vidaPersonagem <= 0) {
+        if (vidaPersonagem <= 0) { // Se o jogador morrer, aparece essa mensagem
             System.out.println("Você morreu pro feiticeiro da Ordem Sombria ");
-        } else if (vidaCriatura <= 0) {
+        } else if (vidaCriatura <= 0) { // Se o inimigo morrer, aparece essa mensagem
             System.out.println("Parabéns, escolhido! Você derrotou o feiticeiro da Ordem Sombria");
         }
     }
+    // Fim das funções de combate
 
+    // Inicio das funções de cura
     /**
      * Classe que ocorre após o usuario escolher Curar no seu turno, ela tem 3
      * poções que acabam.
      */
-    static void curarPersonagem() {
+    static void curarPersonagem() { //Curar o jogador
 
-        if (healthPotion == 0 || healthPotion < 0) {
+        if (healthPotion == 0 || healthPotion < 0) { // Verifica se ainda há poções para serem utilizadas
             System.out.println("Voce nao tem mais pocoes disponiveis");
-            
+
         } else {
-            vidaPersonagem += 24;
-            healthPotion -= 1;
-            System.out.format("Sua vida atual e  %s%n%d%s%n\n", green, vidaPersonagem, fim);
-            System.out.format("Voce so tem mais %d pocoes\n", healthPotion);
+            vidaPersonagem += 24; // Cura o personagem em 24
+            healthPotion -= 1; // Gasta uma poção
+            System.out.format("Sua vida atual e  %s%n%d%s%n\n", green, vidaPersonagem, fim); // Mostra a vida após a cura
+            System.out.format("Voce so tem mais %d pocoes\n", healthPotion); // Mostra a quantidade de poções disponiveis ainda
         }
     }
 
@@ -1854,15 +1918,15 @@ public class Haftafell {
      * Classe que roda após o bot randomizar a opção Curar no seu turno, ele tem
      * 3 poções.
      */
-    static void curarInimigo() {
-        if (healthPotionEnemy <= 0) {
+    static void curarInimigo() { // Curar o inimigo
+        if (healthPotionEnemy <= 0) { // Verifica se ainda há poções para serem utilizadas
             System.out.println("O inimigo não tem mais poções");
         } else {
-            vidaCriatura += 24;
-            healthPotionEnemy -= 1;
-            System.out.format("A vida atual do inimigo é   %s%n%d%s%n\n", red, vidaCriatura,fim);
-            System.out.format("O inimigo so tem mais %d pocoes\n", healthPotionEnemy);
+            vidaCriatura += 24; // Cura o inimigo em 24
+            healthPotionEnemy -= 1; // Gasta uma poção
+            System.out.format("A vida atual do inimigo é   %s%n%d%s%n\n", red, vidaCriatura, fim); // Mostra a vida após a cura
+            System.out.format("O inimigo so tem mais %d pocoes\n", healthPotionEnemy); // Mostra a quantidade de poções disponiveis ainda
         }
     }
-
+    // Fim das funções de cura
 }
