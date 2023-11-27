@@ -20,6 +20,19 @@ Agradecimento aos excepcionais profissionais [Caike Jesus](https://www.linkedin.
 Nosso jogo, conta com diversas mecanicas unicas para desenvolver imersão no usuário, nossos excelentes programadores colocaram muito de seus sentimentos no código, tornando o jogo algo unico e incrivel.
 
 - ### ⚙ Mecanicas
+#### 💻 Cores para o Terminal
+
+Nosso código conta com uma funcionalidade que muda as cores de algumas palavras no terminal, para vê-las, utilize o Apache NetBeans IDE 19.
+
+``` bash
+    // Cores para o terminal
+    static final String fim = "\u001B[0m";
+    static final String red = "\u001B[31m";
+    static final String green = "\u001B[32m";
+    static final String yellow = "\u001B[33m";
+    static final String cyan = "\u001B[36m";
+    // Cores para o terminal
+```
 #### 💭 Pular Dialogos
 Uma das mecanicas desenvolvida foi o pulo de diálogo, para que a historia não aparecesse toda de uma vez para o usuário, a solução foi implementar o seguindo código
 
@@ -119,4 +132,3 @@ O desenvolvimento desse RPG foi excepcionalmente emocionante e incrivel, nossa e
 
 ![Logo](https://media.discordapp.net/attachments/1148430124161699931/1157144010280935444/RPG_CAPA.png?ex=654d9756&is=653b2256&hm=836fa56b27e4b8c47063ba03111fb30be360db831e180f21ef3f7a1b5c956528&=&width=453&height=453)
 
-#### Obrigado pela leitura ❤ 
