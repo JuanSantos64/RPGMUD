@@ -5,34 +5,26 @@ package rpgdoscara;
 
 public class Teste {
     public static void main(String[] args) {
-        int a = 3; // Verifica se as poções das criaturas e do personagem estão corretos
-        int b = 50; // Verifica se a vida das criaturas e do personagem estão corretos
-        testa_pocao(a);
-        testa_vida(b);
+        int a = 24; // Verifica se as po����es das criaturas e do personagem est��o corretos
+        int b = 24; // Verifica se a vida das criaturas e do personagem est��o corretos
+        testa_danoInimigo(a);
+        testa_danoPersonagem(b);
     }
-    public static void testa_vida(int a){
-        if(Haftafell.vidaPersonagem!=a)
+    public static void testa_danoInimigo(int a){
+        if(Haftafell.danoInimigo() > a)
             System.out.println("Tem erro aqui");
         else 
             System.out.println("Ok, passou no teste ;-) ");
-        if(Haftafell.vidaCriatura!=a)
-            System.out.println("Tem erro aqui");
-        else
-            System.out.println("Ok, passou no teste ;-) ");
     }
-    public static void testa_pocao(int a){
-        if (Haftafell.healthPotion != a){
+    public static void testa_danoPersonagem(int a){
+        if (Haftafell.danoPersonagem() > a){
             System.out.println("Tem erro aqui");
         }
         else{
             System.out.println("Ok, passou no teste ;-) ");
         }
-        if (Haftafell.healthPotionEnemy != a){
-            System.out.println("Tem erro aqui");
-        }
-        else{
-            System.out.println("Ok, passou no teste ;-) ");
-        }
+    
+        
         
     }
 }
