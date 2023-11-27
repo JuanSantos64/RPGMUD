@@ -1,4 +1,6 @@
 
+# ⚠ Atenção ⚠
+Esse projeto foi feito para ser utilizado na IDE Apache NetBeans IDE 19, para melhor experiencia do projeto, utilize-o nessa IDE
 # ⚜ Haftafell - RPG
 Sejam bem vindos ao nosso RPG!
 
@@ -10,9 +12,9 @@ Nesse jogo, vc acompanhará uma narrativa em um mundo imersivo atravez de batalh
 
 Nosso jogo se passa na incrivel cidade de Haftafell, onde a matematica evoluiu a tal ponto de poder controlar tudo ao redor do mundo, embarque nessa aventura para poder desvendar os misterios desse mundo e enfrentar a Ordem Oculta, organização que quer roubar todo o poder da matematica dada pelos deuses antigos toda para si.
 
-[Acompanhe a historia completa aqui!](https://github.com/JuanSantos64/Grupo-6---Turma-A/tree/historia)
+[Acompanhe a historia completa aqui!](https://github.com/JuanSantos64/Grupo-6---Turma-A/tree/HistóriaRPG)
 
-Agradecimento aos excepcionais profissionais [Cleiton Fiuza](https://www.linkedin.com/in/cleiton-fiuza-souza-42a553193/) e [Henrique Leal](https://www.linkedin.com/in/henrique-leal-28733b1b5/) pelo desenvolvimento dessa excelente e envolvente historia.
+Agradecimento aos excepcionais profissionais [Caike Jesus](https://www.linkedin.com/in/caike-jesus-5a37921b2) e [Henrique Leal](https://www.linkedin.com/in/henrique-leal-28733b1b5/) pelo desenvolvimento dessa excelente e envolvente historia.
 
 ## 🕹 Um pouco mais sobre a mecanica do jogo
 Nosso jogo, conta com diversas mecanicas unicas para desenvolver imersão no usuário, nossos excelentes programadores colocaram muito de seus sentimentos no código, tornando o jogo algo unico e incrivel.
@@ -39,7 +41,7 @@ Ao atacar, o usuario terá que responder uma pergunta corretamente para que poss
 Durante o decorrer da historia, terão momentos de combate, e caso o usuario perca, utilizamos métodos para que ele não volte ao começo do jogo, mas sim para o começo do capitulo.
 
 
-Agradecimento aos excepcionais profissionais [Caike Jesus](https://www.linkedin.com/in/caike-jesus-5a37921b2), [Juan Santos](https://www.linkedin.com/in/juan-santos-28a001288/) e [Maicon Silva](https://www.linkedin.com/in/maicon-silva-888090212/) pelo desenvolvimento desse excelente e envolvente código.
+Agradecimento aos excepcionais profissionais [Cleiton Fiuza](https://www.linkedin.com/in/cleiton-fiuza-souza-42a553193/), [Juan Santos](https://www.linkedin.com/in/juan-santos-28a001288/) e [Maicon Silva](https://www.linkedin.com/in/maicon-silva-888090212/) pelo desenvolvimento desse excelente e envolvente código.
 ### 👨‍💻 Conheça os integrantes
 Caike Jesus
 
