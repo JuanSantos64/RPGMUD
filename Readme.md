@@ -97,6 +97,82 @@ Decidimos adicionar imagens ASCII para maior imersão no código com uma previsu
 
 Durante o decorrer da historia, terão momentos de combate, e caso o usuario perca, utilizamos métodos para que ele não volte ao começo do jogo, mas sim para o começo do capitulo.
 
+- ### 💬 Comentarios
+
+#### 📖 Indice
+
+Nosso código conta com um vasto indice que localiza todas as funções para o leitor do código: 
+
+```bash
+* 
+*                                                                  FUNÇÕES DE INTERFACE DE MENU --- Linha 104
+*                                                                      menu() --- Linha 110
+*                                                                      instrucoes() --- Linha 144
+*                                                                      jogar() --- Linha 152
+*                                                                      créditos() --- Linha 179
+*                                                                  FUNÇÕES DE CAPÍTULOS --- Linha 187
+*                                                                      historiaCapitulo1() --- Linha 193
+*                                                                      historiaCapitulo2() --- Linha 268
+*                                                                      historiaCapitulo2Cena1() --- Linha 303
+*                                                                      historiaCapitulo2Cena2() --- Linha 435
+*                                                                      enter() --- Linha 474
+*                                                                  FUNÇÕES DE DESAFIO --- Linha 479
+*                                                                      desafio1() --- Linha 485
+*                                                                      desafio2() --- Linha 507
+*                                                                      desafio3() --- Linha 529
+*                                                                      desafio4() --- Linha 548
+*                                                                      desafio5() --- Linha 570
+*                                                                      desafio6() --- Linha 591
+*                                                                  FUNÇÕES DE COMBATE --- Linha 605
+*                                                                      danoPersonagem() --- Linha 614
+*                                                                      danoInimigo() --- Linha 625
+*                                                                      combatePersonagemFacil() --- Linha 636
+*                                                                      combatePersonagemMedio() --- Linha 667
+*                                                                      combatePersonagemDificil() --- Linha 697
+*                                                                      combateInimigoFacil() --- Linha 730
+*                                                                      combateInimigoMedio() --- Linha 751 
+*                                                                      combateInimigoDificil() --- Linha 772 
+*                                                                      ataquePersonagemFacil() --- Linha 796
+*                                                                      ataquePersonagemMedio() --- Linha 962
+*                                                                      ataquePersonagemDificil() --- Linha 1141
+*                                                                      ataqueMiniBossFacil() --- Linha 1295
+*                                                                      ataqueMiniBossMedio() --- Linha 1456
+*                                                                      ataqueMiniBossDificil() --- Linha 1628
+*                                                                      combateFacil() --- Linha 1775
+*                                                                      combateMedio() --- Linha 1828
+*                                                                      combateDificil() --- Linha 1890
+*                                                                      curarPersonagem() --- Linha 1946
+*                                                                      curarInimigo() --- Linha 1963
+```
+### 🗨 Funções e código comentados
+
+Nosso código conta com comentarios em todas as partes do código, explicando as funções e explicações dentro das funções:
+
+```bash
+     /**
+     * Classe que contém o primeiro desafio utilizado na historia <- Explicação da função
+     */
+    static void desafio1() {
+        int escolhaDesafio1; // Inicialização da variável que será utilizado para escolha
+        System.out.println("=== Desafio ===");
+        System.out.println("Quanto é 2020 elevado a 0 ?");
+        System.out.println("1 - 0");
+        System.out.println("2 - 1");
+        System.out.println("3 - 2020");
+        escolhaDesafio1 = entrada.nextInt(); // Armazena o que o usuário digitou <- Explicação das linhas do código dentro da função
+        switch (escolhaDesafio1) { // Verifica qual opção foi escolhida
+            case 2 ->
+                System.out.println("Após resolver o desafio uma luz surge em volta da árvore, \nformando uma espécie de globo, o tempo lá fora parece estar passando devagar...");
+            default -> {
+                System.out.println("Você errou meu querido, estamos reiniciando a pergunta");
+                desafio1();
+            }
+        }
+
+    }
+```
+
+
 
 Agradecimento aos excepcionais profissionais [Cleiton Fiuza](https://www.linkedin.com/in/cleiton-fiuza-souza-42a553193/), [Juan Santos](https://www.linkedin.com/in/juan-santos-28a001288/) e [Maicon Silva](https://www.linkedin.com/in/maicon-silva-888090212/) pelo desenvolvimento desse excelente e envolvente código.
 ### 👨‍💻 Conheça os integrantes
