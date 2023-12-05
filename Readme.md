@@ -24,23 +24,11 @@ Nosso jogo, conta com diversas mecanicas unicas para desenvolver imersão no usu
 
 Nosso código conta com uma funcionalidade que muda as cores de algumas palavras no terminal, para vê-las, utilize o Apache NetBeans IDE 19.
 
-``` bash
-    // Cores para o terminal
-    static final String fim = "\u001B[0m";
-    static final String red = "\u001B[31m";
-    static final String green = "\u001B[32m";
-    static final String yellow = "\u001B[33m";
-    static final String cyan = "\u001B[36m";
-    // Cores para o terminal
-```
+![Cores Do Terminal](https://cdn.discordapp.com/attachments/1141431801324261439/1181373172466073601/cores_pro_terminal.png?ex=6580d281&is=656e5d81&hm=6e24128edda9c7ed93892511fdc0916d34557e952c5906616aa1abfc6a24c533&)
 #### 💭 Pular Dialogos
 Uma das mecanicas desenvolvida foi o pulo de diálogo, para que a historia não aparecesse toda de uma vez para o usuário, a solução foi implementar o seguindo código
 
-```bash
- static void enter(Scanner entrada) {
-        entrada.nextLine(); // Aguarda até que o usuário pressione Enter
-    }
-```
+![Enter](https://cdn.discordapp.com/attachments/1141431801324261439/1181373701715918859/enter.png?ex=6580d2ff&is=656e5dff&hm=399c5152d446ab43c38e614ed8b1f1cd3a07f9a502ba5833cb213f7bb8f5e888&)
 
 #### ⚔ Combate por turnos
 
@@ -48,130 +36,16 @@ Durante o desenvolvimento do jogo, estivemos pensando a todo momento, como seria
 
 Ao atacar, o usuario terá que responder uma pergunta corretamente para que possa aplicar o dano, no turno da maquina ela também tera essas opções, porém será escolhido de maneira aleátoria.
 
-```bash
-        while ((vidaCriatura > 0 || vidaPersonagem > 0)) { // Roda infinitamente até que um dos dois (inimigo ou jogador) tome um dano fatal ou seja, suas vidas chegarem a 0
-            combatePersonagemFacil();
-            combateInimigoFacil();
-        }
-
-        if (vidaPersonagem <= 0) { // Se o jogador morrer, aparece essa mensagem
-            System.out.println("Você morreu pro golem, você não parece ser o escolhido");
-        } else if (vidaCriatura <= 0) { // Se o inimigo morrer, aparece essa mensagem
-            System.out.println("Boa, você derrotou o golem");
-        }
-```
+![Combate](https://cdn.discordapp.com/attachments/1141431801324261439/1181374292995350618/combatecerto.png?ex=6580d38c&is=656e5e8c&hm=48e7c4a8274b6f9844855760da37f7d76c9377d307a2b8be8e0d0d7f6d9d4f9b&)
 
 #### 🖥 Imagem ASCII
 
 Decidimos adicionar imagens ASCII para maior imersão no código com uma previsualização dos inimigos, onde aparece o visual do inimigo e o seu nome logo acima
 
-```bash
-        System.out.println("                                        \n" +
-"                 @@&&&/                 \n" +
-"                 &###%&                 \n" +
-"         @.@&(  #&&/#%&%. @@@           \n" +
-"       @&%%&%%%&&&#(%#@%&%%&@@&         \n" +
-"      %&%&(%@%%%#%&#%#%#%%%%%&&@&       \n" +
-"   (   @@&@%@&%&(&&##((%(@(%@&@@.       \n" +
-" .&@@&@%#%&@&&&&%&&((#&@#&%@%&#%%@&.   ,\n" +
-" *&&@&&&#&&@*@@@@&&%%%&#&@&@@&&%&&%&%&@%\n" +
-"  &&%&&&.     @&%&@&&&@&@@      %&&&&&#@\n" +
-" &&@&@@&      ,&&&&&&&%#&&      @&&%@%& \n" +
-" /&%%&%     ,& &%&&@&&&%&*&#      &&%&@,\n" +
-" @&%&@       &%%@&&@@@&@%&&&,      &%&, \n" +
-" @&&#&%*     &&%&&@@&@&&&@&@@     %(&%. \n" +
-"   &%& &   %&&&&&&#&&&@%&@&&@@    %,@@# \n" +
-"   #%%&   @@&@&&@@@@&@@&@@&%%&&    #@%/ \n" +
-"          @&&&@&@@@@###@@&@#%&&@        \n" +
-"         @&%&%&@&@     @@&&@@&&&&@      \n" +
-"        &%@@%%&(         @#%&#&&&@      \n" +
-"      , &&%@&%            #@#@&&%&      \n" +
-"      %&%%%@&/              &%&&@&(     \n" +
-"     @@%@@@&.              ,&@@&&@&#    \n" +
-"    &@&&&@@                  &@&&&@%    \n" +
-"    &&%&&@                    @&&@@     \n" +
-"   &@@&#&                      @&&%     \n" +
-"   @@@%#@                      @&%&&(  ");
-```
+![Imagem ASCII](https://cdn.discordapp.com/attachments/1141431801324261439/1181374954739085332/Imagem_ASCII.png?ex=6580d42a&is=656e5f2a&hm=7f3ae52053067949cc83a59546eb970cef59da8726eccdb7be0a4740c7c01f71&)
 #### 📍 Checkpoint
 
 Durante o decorrer da historia, terão momentos de combate, e caso o usuario perca, utilizamos métodos para que ele não volte ao começo do jogo, mas sim para o começo do capitulo.
-
-- ### 💬 Comentarios
-
-#### 📖 Indice
-
-Nosso código conta com um vasto indice que localiza todas as funções para o leitor do código: 
-
-```bash
-* 
-*                                                                  FUNÇÕES DE INTERFACE DE MENU --- Linha 104
-*                                                                      menu() --- Linha 110
-*                                                                      instrucoes() --- Linha 144
-*                                                                      jogar() --- Linha 152
-*                                                                      créditos() --- Linha 179
-*                                                                  FUNÇÕES DE CAPÍTULOS --- Linha 187
-*                                                                      historiaCapitulo1() --- Linha 193
-*                                                                      historiaCapitulo2() --- Linha 268
-*                                                                      historiaCapitulo2Cena1() --- Linha 303
-*                                                                      historiaCapitulo2Cena2() --- Linha 435
-*                                                                      enter() --- Linha 474
-*                                                                  FUNÇÕES DE DESAFIO --- Linha 479
-*                                                                      desafio1() --- Linha 485
-*                                                                      desafio2() --- Linha 507
-*                                                                      desafio3() --- Linha 529
-*                                                                      desafio4() --- Linha 548
-*                                                                      desafio5() --- Linha 570
-*                                                                      desafio6() --- Linha 591
-*                                                                  FUNÇÕES DE COMBATE --- Linha 605
-*                                                                      danoPersonagem() --- Linha 614
-*                                                                      danoInimigo() --- Linha 625
-*                                                                      combatePersonagemFacil() --- Linha 636
-*                                                                      combatePersonagemMedio() --- Linha 667
-*                                                                      combatePersonagemDificil() --- Linha 697
-*                                                                      combateInimigoFacil() --- Linha 730
-*                                                                      combateInimigoMedio() --- Linha 751 
-*                                                                      combateInimigoDificil() --- Linha 772 
-*                                                                      ataquePersonagemFacil() --- Linha 796
-*                                                                      ataquePersonagemMedio() --- Linha 962
-*                                                                      ataquePersonagemDificil() --- Linha 1141
-*                                                                      ataqueMiniBossFacil() --- Linha 1295
-*                                                                      ataqueMiniBossMedio() --- Linha 1456
-*                                                                      ataqueMiniBossDificil() --- Linha 1628
-*                                                                      combateFacil() --- Linha 1775
-*                                                                      combateMedio() --- Linha 1828
-*                                                                      combateDificil() --- Linha 1890
-*                                                                      curarPersonagem() --- Linha 1946
-*                                                                      curarInimigo() --- Linha 1963
-```
-### 🗨 Funções e código comentados
-
-Nosso código conta com comentarios em todas as partes do código, explicando as funções e explicações dentro das funções:
-
-```bash
-     /**
-     * Classe que contém o primeiro desafio utilizado na historia <- Explicação da função
-     */
-    static void desafio1() {
-        int escolhaDesafio1; // Inicialização da variável que será utilizado para escolha
-        System.out.println("=== Desafio ===");
-        System.out.println("Quanto é 2020 elevado a 0 ?");
-        System.out.println("1 - 0");
-        System.out.println("2 - 1");
-        System.out.println("3 - 2020");
-        escolhaDesafio1 = entrada.nextInt(); // Armazena o que o usuário digitou <- Explicação das linhas do código dentro da função
-        switch (escolhaDesafio1) { // Verifica qual opção foi escolhida
-            case 2 ->
-                System.out.println("Após resolver o desafio uma luz surge em volta da árvore, \nformando uma espécie de globo, o tempo lá fora parece estar passando devagar...");
-            default -> {
-                System.out.println("Você errou meu querido, estamos reiniciando a pergunta");
-                desafio1();
-            }
-        }
-
-    }
-```
-
 
 
 Agradecimento aos excepcionais profissionais [Cleiton Fiuza](https://www.linkedin.com/in/cleiton-fiuza-souza-42a553193/), [Juan Santos](https://www.linkedin.com/in/juan-santos-28a001288/) e [Maicon Silva](https://www.linkedin.com/in/maicon-silva-888090212/) pelo desenvolvimento desse excelente e envolvente código.
